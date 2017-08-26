@@ -35,5 +35,19 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NFS2Tools.DataAccess\NFS2Tools.DataAccess.csproj">
+      <Project>{13D85053-550F-4FAC-9A92-BB43D1007D5E}</Project>
+      <Name>NFS2Tools.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NFS2Tools.Models\NFS2Tools.Models.csproj">
+      <Project>{185FC5F0-9BCC-4A07-9AD4-6C26B6F739AB}</Project>
+      <Name>NFS2Tools.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NFS2Tools.ConversionLogic\NFS2Tools.ConversionLogic.csproj">
+      <Project>{E13E1547-F348-43CA-8DE0-895F028B858A}</Project>
+      <Name>NFS2Tools.ConversionLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,6 +6,6 @@ namespace NFS2Tools.DataAccess.IO.Interfaces
     {
         TrackRecordsEntity Read(string path);
 
-        void Write(TrackRecordsEntity statsFileEntity, string path);
+        void Write(string path, TrackRecordsEntity statsFileEntity);
     }
 }

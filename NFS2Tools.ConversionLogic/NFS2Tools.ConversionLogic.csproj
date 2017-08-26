@@ -36,9 +36,13 @@
     <Compile Include="Mapping\SharedPictureFileMappingExtensions.cs" />
     <Compile Include="Mapping\TrackRecordsMappingExtensions.cs" />
     <Compile Include="Mapping\SharedPictureMappingExtensions.cs" />
+    <Compile Include="Converters\StfConverter.cs" />
+    <Compile Include="Converters\Interfaces\IStfConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mapping\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Converters\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NFS2Tools.DataAccess\NFS2Tools.DataAccess.csproj">

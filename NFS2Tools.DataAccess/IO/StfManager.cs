@@ -14,25 +14,6 @@ namespace NFS2Tools.DataAccess.IO
     public class StfManager : IStfManager
     {
         /// <summary>
-        /// Writes the STF file.
-        /// </summary>
-        /// <param name="statsFileEntity">Stats file entity.</param>
-        /// <param name="path">Path.</param>
-        public void Write(TrackRecordsEntity statsFileEntity, string path)
-        {
-            byte[] data = new byte[527];
-
-            for (int i = 0; i < 31; i++)
-            {
-                LapRecordEntity lapRecord = statsFileEntity.LapRecords[i];
-                int currentEntryOffset = i * 20; // Each entry is actually 17 bytes but there seem to be 3 spare bytes for each
-
-                byte[] playerNameBytes = lapRecord.PlayerName.Select(Convert.ToByte).ToArray();
-                //byte
-            }
-        }
-
-        /// <summary>
         /// Reads the STF file.
         /// </summary>
         /// <returns>The stf.</returns>
@@ -65,6 +46,25 @@ namespace NFS2Tools.DataAccess.IO
             }
 
             return trackRecordEntity;
+        }
+
+        /// <summary>
+        /// Writes the STF file.
+        /// </summary>
+        /// <param name="path">Path.</param>
+        /// <param name="statsFileEntity">Stats file entity.</param>
+        public void Write(string path, TrackRecordsEntity statsFileEntity)
+        {
+            byte[] data = new byte[527];
+
+            for (int i = 0; i < 31; i++)
+            {
+                LapRecordEntity lapRecord = statsFileEntity.LapRecords[i];
+                int currentEntryOffset = i * 20; // Each entry is actually 17 bytes but there seem to be 3 spare bytes for each
+
+                byte[] playerNameBytes = lapRecord.PlayerName.Select(Convert.ToByte).ToArray();
+                //byte
+            }
         }
     }
 }
