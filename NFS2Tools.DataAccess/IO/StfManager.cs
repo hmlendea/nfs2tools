@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 using NFS2Tools.DataAccess.DataObjects;
@@ -19,7 +20,16 @@ namespace NFS2Tools.DataAccess.IO
         /// <param name="path">Path.</param>
         public void Write(TrackRecordsEntity statsFileEntity, string path)
         {
-            throw new NotImplementedException();
+            byte[] data = new byte[527];
+
+            for (int i = 0; i < 31; i++)
+            {
+                LapRecordEntity lapRecord = statsFileEntity.LapRecords[i];
+                int currentEntryOffset = i * 20; // Each entry is actually 17 bytes but there seem to be 3 spare bytes for each
+
+                byte[] playerNameBytes = lapRecord.PlayerName.Select(Convert.ToByte).ToArray();
+                //byte
+            }
         }
 
         /// <summary>
@@ -44,9 +54,9 @@ namespace NFS2Tools.DataAccess.IO
                     int currentEntryOffset = i * 20; // Each entry is actually 17 bytes but there seem to be 3 spare bytes for each
 
                     lapRecord.PlayerName = Encoding.ASCII.GetString(bits, currentEntryOffset, 9);
-                    lapRecord.CarId = BitConverter.ToInt16(bits, currentEntryOffset + 9);
+                    lapRecord.CarId = bits[currentEntryOffset + 10];
                     lapRecord.Time = BitConverter.ToInt32(bits, currentEntryOffset + 11);
-                    lapRecord.RaceType = BitConverter.ToInt16(bits, currentEntryOffset + 15);
+                    lapRecord.RaceType = bits[currentEntryOffset + 16];
 
                     lapRecord.PlayerName = lapRecord.PlayerName.Substring(0, lapRecord.PlayerName.IndexOf("\0", StringComparison.InvariantCulture));
 

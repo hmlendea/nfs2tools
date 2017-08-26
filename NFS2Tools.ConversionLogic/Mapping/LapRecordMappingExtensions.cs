@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using NFS2Tools.DataAccess.DataObjects;
@@ -23,7 +24,7 @@ namespace NFS2Tools.ConversionLogic.Mapping
             {
                 PlayerName = lapRecordEntity.PlayerName,
                 Car = (Car)lapRecordEntity.CarId,
-                Time = lapRecordEntity.Time,
+                Time = TimeSpan.FromSeconds(lapRecordEntity.Time / 16384),
                 RaceType = (RaceType)lapRecordEntity.RaceType
             };
 
@@ -41,7 +42,7 @@ namespace NFS2Tools.ConversionLogic.Mapping
             {
                 PlayerName = lapRecord.PlayerName,
                 CarId = (int)lapRecord.Car,
-                Time = lapRecord.Time,
+                Time = (int)(lapRecord.Time.TotalSeconds * 16384),
                 RaceType = (int)lapRecord.RaceType
             };
 
