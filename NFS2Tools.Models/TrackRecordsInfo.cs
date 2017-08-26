@@ -5,7 +5,7 @@ namespace NFS2Tools.Models
     /// <summary>
     /// Stats file (STF).
     /// </summary>
-    public class StatsFile
+    public class TrackRecords
     {
         /// <summary>
         /// Gets or sets the lap records.
@@ -14,9 +14,9 @@ namespace NFS2Tools.Models
         public IEnumerable<LapRecord> LapRecords { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StatsFile"/> class.
+        /// Initializes a new instance of the <see cref="TrackRecords"/> class.
         /// </summary>
-        public StatsFile()
+        public TrackRecords()
         {
             LapRecords = new List<LapRecord>();
         }

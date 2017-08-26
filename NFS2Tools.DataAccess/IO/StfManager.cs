@@ -3,20 +3,33 @@ using System.IO;
 using System.Text;
 
 using NFS2Tools.DataAccess.DataObjects;
-using NFS2Tools.DataAccess.Repositories.Interfaces;
+using NFS2Tools.DataAccess.IO.Interfaces;
 
-namespace NFS2Tools.DataAccess.Repositories
+namespace NFS2Tools.DataAccess.IO
 {
-    public class StatsFileRepository : IStatsFileRepository
+    /// <summary>
+    /// STF manager.
+    /// </summary>
+    public class StfManager : IStfManager
     {
-        public void Add(StatsFileEntity statsFileEntity)
+        /// <summary>
+        /// Writes the STF file.
+        /// </summary>
+        /// <param name="statsFileEntity">Stats file entity.</param>
+        /// <param name="path">Path.</param>
+        public void Write(TrackRecordsEntity statsFileEntity, string path)
         {
             throw new NotImplementedException();
         }
 
-        public StatsFileEntity Get(string path)
+        /// <summary>
+        /// Reads the STF file.
+        /// </summary>
+        /// <returns>The stf.</returns>
+        /// <param name="path">Path.</param>
+        public TrackRecordsEntity Read(string path)
         {
-            StatsFileEntity stf = new StatsFileEntity();
+            TrackRecordsEntity trackRecordEntity = new TrackRecordsEntity();
 
             using (FileStream fs = new FileStream(path, FileMode.Open))
             {
@@ -37,11 +50,11 @@ namespace NFS2Tools.DataAccess.Repositories
 
                     lapRecord.PlayerName = lapRecord.PlayerName.Substring(0, lapRecord.PlayerName.IndexOf("\0", StringComparison.InvariantCulture));
 
-                    stf.LapRecords[i] = lapRecord;
+                    trackRecordEntity.LapRecords[i] = lapRecord;
                 }
             }
 
-            return stf;
+            return trackRecordEntity;
         }
     }
 }

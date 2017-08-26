@@ -34,7 +34,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Mapping\LapRecordMappingExtensions.cs" />
     <Compile Include="Mapping\SharedPictureFileMappingExtensions.cs" />
-    <Compile Include="Mapping\StatsFileMappingExtensions.cs" />
+    <Compile Include="Mapping\TrackRecordsMappingExtensions.cs" />
     <Compile Include="Mapping\SharedPictureMappingExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -31,7 +31,7 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StatsFile.cs" />
+    <Compile Include="TrackRecordsInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedPictureFile.cs" />
     <Compile Include="SharedPicture.cs" />

@@ -28,22 +28,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataObjects\LapRecordEntity.cs" />
     <Compile Include="DataObjects\SharedPictureFileEntity.cs" />
     <Compile Include="DataObjects\SharedPictureEntity.cs" />
-    <Compile Include="Repositories\Interfaces\IStatsFileRepository.cs" />
-    <Compile Include="Repositories\Interfaces\ISharedPictureFileRepository.cs" />
-    <Compile Include="Repositories\SharedPictureFileRepository.cs" />
-    <Compile Include="Repositories\StatsFileRepository.cs" />
-    <Compile Include="DataObjects\StatsFileEntity.cs" />
+    <Compile Include="DataObjects\TrackRecordsEntity.cs" />
+    <Compile Include="IO\Interfaces\IStfManager.cs" />
+    <Compile Include="IO\StfManager.cs" />
+    <Compile Include="IO\XmlManager.cs" />
+    <Compile Include="IO\Interfaces\IXmlManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Repositories\" />
-    <Folder Include="Repositories\Interfaces\" />
     <Folder Include="DataObjects\" />
+    <Folder Include="IO\" />
+    <Folder Include="IO\Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

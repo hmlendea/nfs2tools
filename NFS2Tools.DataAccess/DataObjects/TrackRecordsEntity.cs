@@ -3,7 +3,7 @@
     /// <summary>
     /// Stats file (STF) data entity.
     /// </summary>
-    public class StatsFileEntity
+    public class TrackRecordsEntity
     {
         /// <summary>
         /// Gets or sets the lap records.
@@ -12,9 +12,9 @@
         public LapRecordEntity[] LapRecords { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StatsFileEntity"/> class.
+        /// Initializes a new instance of the <see cref="TrackRecordsEntity"/> class.
         /// </summary>
-        public StatsFileEntity()
+        public TrackRecordsEntity()
         {
             LapRecords = new LapRecordEntity[31];
         }
