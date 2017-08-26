@@ -1,4 +1,6 @@
-﻿namespace NFS2Tools.Models
+﻿using NFS2Tools.Models.Enumerations;
+
+namespace NFS2Tools.Models
 {
     /// <summary>
     /// Lap record.
@@ -12,10 +14,10 @@
         public string PlayerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the car identifier.
+        /// Gets or sets the car.
         /// </summary>
-        /// <value>The car identifier.</value>
-        public int CarId { get; set; }
+        /// <value>The car.</value>
+        public Car Car { get; set; }
 
         /// <summary>
         /// Gets or sets the time.

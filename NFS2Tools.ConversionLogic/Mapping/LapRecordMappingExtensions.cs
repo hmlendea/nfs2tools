@@ -3,6 +3,7 @@ using System.Linq;
 
 using NFS2Tools.DataAccess.DataObjects;
 using NFS2Tools.Models;
+using NFS2Tools.Models.Enumerations;
 
 namespace NFS2Tools.ConversionLogic.Mapping
 {
@@ -21,7 +22,7 @@ namespace NFS2Tools.ConversionLogic.Mapping
             LapRecord lapRecord = new LapRecord
             {
                 PlayerName = lapRecordEntity.PlayerName,
-                CarId = lapRecordEntity.CarId,
+                Car = (Car)lapRecordEntity.CarId,
                 Time = lapRecordEntity.Time,
                 RaceType = lapRecordEntity.RaceType
             };
@@ -39,7 +40,7 @@ namespace NFS2Tools.ConversionLogic.Mapping
             LapRecordEntity lapRecordEntity = new LapRecordEntity
             {
                 PlayerName = lapRecord.PlayerName,
-                CarId = lapRecord.CarId,
+                CarId = (int)lapRecord.Car,
                 Time = lapRecord.Time,
                 RaceType = lapRecord.RaceType
             };

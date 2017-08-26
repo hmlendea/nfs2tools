@@ -36,6 +36,10 @@
     <Compile Include="SharedPictureFile.cs" />
     <Compile Include="SharedPicture.cs" />
     <Compile Include="LapRecord.cs" />
+    <Compile Include="Enumerations\Car.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enumerations\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
