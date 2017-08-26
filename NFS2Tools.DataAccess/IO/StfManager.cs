@@ -55,16 +55,30 @@ namespace NFS2Tools.DataAccess.IO
         /// <param name="statsFileEntity">Stats file entity.</param>
         public void Write(string path, TrackRecordsEntity statsFileEntity)
         {
-            byte[] data = new byte[527];
+            byte[] data = new byte[620];
 
             for (int i = 0; i < 31; i++)
             {
                 LapRecordEntity lapRecord = statsFileEntity.LapRecords[i];
                 int currentEntryOffset = i * 20; // Each entry is actually 17 bytes but there seem to be 3 spare bytes for each
 
-                byte[] playerNameBytes = lapRecord.PlayerName.Select(Convert.ToByte).ToArray();
-                //byte
+                byte[] playerNameBytes = lapRecord.PlayerName.PadRight(9, '\0').Select(Convert.ToByte).ToArray();
+                byte[] carBytes = BitConverter.GetBytes(lapRecord.CarId);
+                byte[] timeBytes = BitConverter.GetBytes(lapRecord.Time);
+                byte[] raceTypeBytes = BitConverter.GetBytes(lapRecord.RaceType);
+                byte[] spares = { 0, 0, 0 };
+
+                Array.Reverse(carBytes);
+                Array.Reverse(raceTypeBytes);
+
+                Array.Copy(playerNameBytes, 0, data, currentEntryOffset, playerNameBytes.Length);
+                Array.Copy(carBytes, 0, data, currentEntryOffset + 9, 2);
+                Array.Copy(timeBytes, 0, data, currentEntryOffset + 11, timeBytes.Length);
+                Array.Copy(raceTypeBytes, 0, data, currentEntryOffset + 15, raceTypeBytes.Length);
+                Array.Copy(spares, 0, data, currentEntryOffset + 17, spares.Length);
             }
+
+            File.WriteAllBytes(path, data);
         }
     }
 }
