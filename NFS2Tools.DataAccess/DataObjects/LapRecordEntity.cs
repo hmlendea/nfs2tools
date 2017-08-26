@@ -15,7 +15,7 @@
         /// Gets or sets the car identifier.
         /// </summary>
         /// <value>The car identifier.</value>
-        public int CarId { get; set; }
+        public short CarId { get; set; }
 
         /// <summary>
         /// Gets or sets the time.
@@ -27,6 +27,6 @@
         /// Gets or sets the type of the race.
         /// </summary>
         /// <value>The type of the race.</value>
-        public int RaceType { get; set; }
+        public short RaceType { get; set; }
     }
 }
