@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFS2Tools", "NFS2Tools\NFS2Tools.csproj", "{B8B5BBDC-9CAC-42FC-A73B-2BCA5E3B64B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFS2Tools.Models", "NFS2Tools.Models\NFS2Tools.Models.csproj", "{185FC5F0-9BCC-4A07-9AD4-6C26B6F739AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,5 +15,9 @@ Global
 		{B8B5BBDC-9CAC-42FC-A73B-2BCA5E3B64B4}.Debug|x86.Build.0 = Debug|x86
 		{B8B5BBDC-9CAC-42FC-A73B-2BCA5E3B64B4}.Release|x86.ActiveCfg = Release|x86
 		{B8B5BBDC-9CAC-42FC-A73B-2BCA5E3B64B4}.Release|x86.Build.0 = Release|x86
+		{185FC5F0-9BCC-4A07-9AD4-6C26B6F739AB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{185FC5F0-9BCC-4A07-9AD4-6C26B6F739AB}.Debug|x86.Build.0 = Debug|Any CPU
+		{185FC5F0-9BCC-4A07-9AD4-6C26B6F739AB}.Release|x86.ActiveCfg = Release|Any CPU
+		{185FC5F0-9BCC-4A07-9AD4-6C26B6F739AB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
