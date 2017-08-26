@@ -24,7 +24,7 @@ namespace NFS2Tools.ConversionLogic.Mapping
                 PlayerName = lapRecordEntity.PlayerName,
                 Car = (Car)lapRecordEntity.CarId,
                 Time = lapRecordEntity.Time,
-                RaceType = lapRecordEntity.RaceType
+                RaceType = (RaceType)lapRecordEntity.RaceType
             };
 
             return lapRecord;
@@ -42,7 +42,7 @@ namespace NFS2Tools.ConversionLogic.Mapping
                 PlayerName = lapRecord.PlayerName,
                 CarId = (int)lapRecord.Car,
                 Time = lapRecord.Time,
-                RaceType = lapRecord.RaceType
+                RaceType = (int)lapRecord.RaceType
             };
 
             return lapRecordEntity;

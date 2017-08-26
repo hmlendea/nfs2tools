@@ -29,6 +29,6 @@ namespace NFS2Tools.Models
         /// Gets or sets the type of the race.
         /// </summary>
         /// <value>The type of the race.</value>
-        public int RaceType { get; set; }
+        public RaceType RaceType { get; set; }
     }
 }

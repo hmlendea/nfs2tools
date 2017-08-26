@@ -37,6 +37,7 @@
     <Compile Include="SharedPicture.cs" />
     <Compile Include="LapRecord.cs" />
     <Compile Include="Enumerations\Car.cs" />
+    <Compile Include="Enumerations\RaceType.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enumerations\" />
