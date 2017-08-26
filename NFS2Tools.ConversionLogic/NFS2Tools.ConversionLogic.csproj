@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E13E1547-F348-43CA-8DE0-895F028B858A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>NFS2Tools.ConversionLogic</RootNamespace>
+    <AssemblyName>NFS2Tools.ConversionLogic</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Mapping\LapRecordMappingExtensions.cs" />
+    <Compile Include="Mapping\ShpiMappingExtensions.cs" />
+    <Compile Include="Mapping\StatsFileMappingExtensions.cs" />
+    <Compile Include="Mapping\ShpiEntryMappingExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mapping\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NFS2Tools.DataAccess\NFS2Tools.DataAccess.csproj">
+      <Project>{13D85053-550F-4FAC-9A92-BB43D1007D5E}</Project>
+      <Name>NFS2Tools.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NFS2Tools.Models\NFS2Tools.Models.csproj">
+      <Project>{185FC5F0-9BCC-4A07-9AD4-6C26B6F739AB}</Project>
+      <Name>NFS2Tools.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

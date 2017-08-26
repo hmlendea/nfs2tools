@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFS2Tools.Models", "NFS2Too
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFS2Tools.DataAccess", "NFS2Tools.DataAccess\NFS2Tools.DataAccess.csproj", "{13D85053-550F-4FAC-9A92-BB43D1007D5E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFS2Tools.ConversionLogic", "NFS2Tools.ConversionLogic\NFS2Tools.ConversionLogic.csproj", "{E13E1547-F348-43CA-8DE0-895F028B858A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -25,5 +27,9 @@ Global
 		{13D85053-550F-4FAC-9A92-BB43D1007D5E}.Debug|x86.Build.0 = Debug|Any CPU
 		{13D85053-550F-4FAC-9A92-BB43D1007D5E}.Release|x86.ActiveCfg = Release|Any CPU
 		{13D85053-550F-4FAC-9A92-BB43D1007D5E}.Release|x86.Build.0 = Release|Any CPU
+		{E13E1547-F348-43CA-8DE0-895F028B858A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E13E1547-F348-43CA-8DE0-895F028B858A}.Debug|x86.Build.0 = Debug|Any CPU
+		{E13E1547-F348-43CA-8DE0-895F028B858A}.Release|x86.ActiveCfg = Release|Any CPU
+		{E13E1547-F348-43CA-8DE0-895F028B858A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
