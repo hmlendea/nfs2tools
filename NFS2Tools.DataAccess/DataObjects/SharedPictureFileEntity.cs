@@ -1,6 +1,6 @@
 ﻿namespace NFS2Tools.DataAccess.DataObjects
 {
-    public class ShpiEntity
+    public class SharedPictureFileEntity
     {
         /// <summary>
         /// Gets the SHPI header.

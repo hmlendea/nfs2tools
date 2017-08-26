@@ -5,14 +5,14 @@ using NFS2Tools.DataAccess.Repositories.Interfaces;
 
 namespace NFS2Tools.DataAccess.Repositories
 {
-    public class ShpiRepository : IShpiRepository
+    public class SharedPictureFileRepository : ISharedPictureFileRepository
     {
-        public void Add(ShpiEntity shpiEntity)
+        public void Add(SharedPictureFileEntity sharedPictureFileEntity)
         {
             throw new NotImplementedException();
         }
 
-        public ShpiEntity Get(string path)
+        public SharedPictureFileEntity Get(string path)
         {
             throw new NotImplementedException();
         }

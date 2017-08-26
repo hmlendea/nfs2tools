@@ -2,7 +2,10 @@
 
 namespace NFS2Tools.Models
 {
-    public class ShpiEntry
+    /// <summary>
+    /// Shared picture (SHPI entry).
+    /// </summary>
+    public class SharedPicture
     {
         /// <summary>
         /// Gets the size of the block.

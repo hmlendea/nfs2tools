@@ -33,9 +33,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Mapping\LapRecordMappingExtensions.cs" />
-    <Compile Include="Mapping\ShpiMappingExtensions.cs" />
+    <Compile Include="Mapping\SharedPictureFileMappingExtensions.cs" />
     <Compile Include="Mapping\StatsFileMappingExtensions.cs" />
-    <Compile Include="Mapping\ShpiEntryMappingExtensions.cs" />
+    <Compile Include="Mapping\SharedPictureMappingExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mapping\" />

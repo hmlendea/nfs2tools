@@ -1,6 +1,9 @@
 ﻿namespace NFS2Tools.Models
 {
-    public class Shpi
+    /// <summary>
+    /// Shared picture file (SHPI).
+    /// </summary>
+    public class SharedPictureFile
     {
         /// <summary>
         /// Gets the SHPI header.

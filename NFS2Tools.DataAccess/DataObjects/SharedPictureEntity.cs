@@ -1,6 +1,9 @@
 ﻿namespace NFS2Tools.DataAccess.DataObjects
 {
-    public class ShpiEntryEntity
+    /// <summary>
+    /// Shared picture (SHPI entry) entity.
+    /// </summary>
+    public class SharedPictureEntity
     {
         /// <summary>
         /// Gets or sets the width of the bitmap.

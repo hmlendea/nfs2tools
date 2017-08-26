@@ -33,8 +33,8 @@
   <ItemGroup>
     <Compile Include="StatsFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Shpi.cs" />
-    <Compile Include="ShpiEntry.cs" />
+    <Compile Include="SharedPictureFile.cs" />
+    <Compile Include="SharedPicture.cs" />
     <Compile Include="LapRecord.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
