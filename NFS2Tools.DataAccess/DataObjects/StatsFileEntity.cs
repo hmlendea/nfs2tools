@@ -1,29 +1,22 @@
 ﻿namespace NFS2Tools.DataAccess.DataObjects
 {
+    /// <summary>
+    /// Stats file (STF) data entity.
+    /// </summary>
     public class StatsFileEntity
     {
         /// <summary>
-        /// Gets or sets the name of the player.
+        /// Gets or sets the lap records.
         /// </summary>
-        /// <value>The name of the player.</value>
-        public string PlayerName { get; set; }
+        /// <value>The lap records.</value>
+        public LapRecordEntity[] LapRecords { get; set; }
 
         /// <summary>
-        /// Gets or sets the car identifier.
+        /// Initializes a new instance of the <see cref="StatsFileEntity"/> class.
         /// </summary>
-        /// <value>The car identifier.</value>
-        public int CarId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the time.
-        /// </summary>
-        /// <value>The time (64ths of a second).</value>
-        public int Time { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type of the race.
-        /// </summary>
-        /// <value>The type of the race.</value>
-        public int RaceType { get; set; }
+        public StatsFileEntity()
+        {
+            LapRecords = new LapRecordEntity[31];
+        }
     }
 }

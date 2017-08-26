@@ -1,29 +1,24 @@
-﻿namespace NFS2Tools.Models
+﻿using System.Collections.Generic;
+
+namespace NFS2Tools.Models
 {
+    /// <summary>
+    /// Stats file (STF).
+    /// </summary>
     public class StatsFile
     {
         /// <summary>
-        /// Gets or sets the name of the player.
+        /// Gets or sets the lap records.
         /// </summary>
-        /// <value>The name of the player.</value>
-        public string PlayerName { get; set; }
+        /// <value>The lap records.</value>
+        public IEnumerable<LapRecord> LapRecords { get; set; }
 
         /// <summary>
-        /// Gets or sets the car identifier.
+        /// Initializes a new instance of the <see cref="StatsFile"/> class.
         /// </summary>
-        /// <value>The car identifier.</value>
-        public int CarId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the time.
-        /// </summary>
-        /// <value>The time (64ths of a second).</value>
-        public int Time { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type of the race.
-        /// </summary>
-        /// <value>The type of the race.</value>
-        public int RaceType { get; set; }
+        public StatsFile()
+        {
+            LapRecords = new List<LapRecord>();
+        }
     }
 }

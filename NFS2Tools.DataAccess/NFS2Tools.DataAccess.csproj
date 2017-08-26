@@ -31,13 +31,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataObjects\StatsFileEntity.cs" />
+    <Compile Include="DataObjects\LapRecordEntity.cs" />
     <Compile Include="DataObjects\ShpiEntity.cs" />
     <Compile Include="DataObjects\ShpiEntryEntity.cs" />
     <Compile Include="Repositories\Interfaces\IStatsFileRepository.cs" />
     <Compile Include="Repositories\Interfaces\IShpiRepository.cs" />
     <Compile Include="Repositories\ShpiRepository.cs" />
     <Compile Include="Repositories\StatsFileRepository.cs" />
+    <Compile Include="DataObjects\StatsFileEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
