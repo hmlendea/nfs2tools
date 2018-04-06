@@ -23,7 +23,7 @@ namespace NFS2Tools.ConversionLogic.Mapping
             LapRecord lapRecord = new LapRecord
             {
                 PlayerName = lapRecordEntity.PlayerName,
-                Car = (Car)lapRecordEntity.CarId,
+                Car = (CarType)lapRecordEntity.CarId,
                 Time = TimeSpan.FromSeconds(lapRecordEntity.Time / 16384),
                 RaceType = (RaceType)lapRecordEntity.RaceType
             };
@@ -40,7 +40,7 @@ namespace NFS2Tools.ConversionLogic.Mapping
         {
             LapRecordEntity lapRecordEntity = new LapRecordEntity
             {
-                PlayerName = lapRecord.PlayerName,
+                PlayerName = lapRecord.PlayerName.PadRight(9, '\0').Substring(0, 9),
                 CarId = (short)lapRecord.Car,
                 Time = (int)(lapRecord.Time.TotalSeconds * 16384),
                 RaceType = (short)lapRecord.RaceType

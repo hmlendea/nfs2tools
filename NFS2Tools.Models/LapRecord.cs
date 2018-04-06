@@ -19,7 +19,7 @@ namespace NFS2Tools.Models
         /// Gets or sets the car.
         /// </summary>
         /// <value>The car.</value>
-        public Car Car { get; set; }
+        public CarType Car { get; set; }
 
         /// <summary>
         /// Gets or sets the time.

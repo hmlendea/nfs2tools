@@ -19,8 +19,6 @@ namespace NFS2Tools.DataAccess.IO
                 isCompressed = true;
 
                 Console.WriteLine($"Decompressing QFS file ({inbuf.Length})");
-
-                if ()
             }
         }
 
@@ -63,8 +61,6 @@ namespace NFS2Tools.DataAccess.IO
                 if ((packCode & 0x80) == 0)
                 {
                     len = packCode & 3;
-
-                    Array.Copy()
                 }
             }
 

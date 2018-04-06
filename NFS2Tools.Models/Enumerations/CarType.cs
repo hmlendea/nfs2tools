@@ -3,7 +3,7 @@
     /// <summary>
     /// Car.
     /// </summary>
-    public enum Car
+    public enum CarType
     {
         /// <summary>
         /// McLaren F1.
