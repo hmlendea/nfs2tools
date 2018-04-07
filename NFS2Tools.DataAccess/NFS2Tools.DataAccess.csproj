@@ -48,6 +48,8 @@
     <Compile Include="IO\Interfaces\IXmlManager.cs" />
     <Compile Include="IO\LocalisationFile.cs" />
     <Compile Include="DataObjects\LocalisationEntity.cs" />
+    <Compile Include="IO\NfsFileReader.cs" />
+    <Compile Include="IO\NfsFileWriter.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
