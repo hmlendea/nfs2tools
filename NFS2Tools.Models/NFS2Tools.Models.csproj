@@ -38,6 +38,7 @@
     <Compile Include="LapRecord.cs" />
     <Compile Include="Enumerations\CarType.cs" />
     <Compile Include="Enumerations\RaceType.cs" />
+    <Compile Include="Localisation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enumerations\" />

@@ -46,6 +46,8 @@
     <Compile Include="IO\StfManager.cs" />
     <Compile Include="IO\XmlManager.cs" />
     <Compile Include="IO\Interfaces\IXmlManager.cs" />
+    <Compile Include="IO\LocalisationFile.cs" />
+    <Compile Include="DataObjects\LocalisationEntity.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
