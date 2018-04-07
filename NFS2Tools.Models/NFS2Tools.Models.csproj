@@ -29,6 +29,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TrackRecordsInfo.cs" />
@@ -39,6 +40,7 @@
     <Compile Include="Enumerations\CarType.cs" />
     <Compile Include="Enumerations\RaceType.cs" />
     <Compile Include="Localisation.cs" />
+    <Compile Include="LocalisationEntry.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enumerations\" />

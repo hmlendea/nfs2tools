@@ -1,7 +1,9 @@
 ﻿using NFS2Tools.ConversionLogic.Converters.Interfaces;
+using NFS2Tools.ConversionLogic.Mapping;
 using NFS2Tools.DataAccess.DataObjects;
 using NFS2Tools.DataAccess.IO;
 using NFS2Tools.DataAccess.IO.Interfaces;
+using NFS2Tools.Models;
 
 namespace NFS2Tools.ConversionLogic.Converters
 {
@@ -11,7 +13,7 @@ namespace NFS2Tools.ConversionLogic.Converters
     public class LocalisationConverter : ILocalisationConverter
     {
         readonly LocalisationFile localisationFile;
-        readonly IXmlManager<LocalisationEntity> xmlManager;
+        readonly IXmlManager<Localisation> xmlManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LocalisationConverter"/> class.
@@ -19,7 +21,7 @@ namespace NFS2Tools.ConversionLogic.Converters
         public LocalisationConverter()
         {
             localisationFile = new LocalisationFile();
-            xmlManager = new XmlManager<LocalisationEntity>();
+            xmlManager = new XmlManager<Localisation>();
         }
 
         /// <summary>
@@ -29,7 +31,7 @@ namespace NFS2Tools.ConversionLogic.Converters
         /// <param name="outputPath">XML path.</param>
         public void ConvertToXML(string inputPath, string outputPath)
         {
-            LocalisationEntity locale = localisationFile.Read(inputPath);
+            Localisation locale = localisationFile.Read(inputPath).ToDomainModel();
 
             xmlManager.Write(outputPath, locale);
         }
@@ -41,7 +43,7 @@ namespace NFS2Tools.ConversionLogic.Converters
         /// <param name="outputPath">Localisation file path.</param>
         public void ConvertToLocalisationFile(string inputPath, string outputPath)
         {
-            LocalisationEntity locale = xmlManager.Read(inputPath);
+            LocalisationEntity locale = xmlManager.Read(inputPath).ToEntity();
 
             localisationFile.Write(outputPath, locale);
         }
