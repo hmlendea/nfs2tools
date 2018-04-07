@@ -22,7 +22,8 @@ namespace NFS2Tools.ConversionLogic.Mapping
             {
                 Unknown1 = entity.Unknown1,
                 Unknown2 = entity.Unknown2,
-                Entries = entity.Entries.Select(x => new LocalisationEntry(x.Key, x.Value)).ToList()
+                Unknown3 = entity.Unknown3,
+                Entries = entity.Entries.Values.ToDomainModels().ToList()
             };
 
             return model;
@@ -39,7 +40,8 @@ namespace NFS2Tools.ConversionLogic.Mapping
             {
                 Unknown1 = model.Unknown1,
                 Unknown2 = model.Unknown2,
-                Entries = model.Entries.ToDictionary(x => x.Key, x => x.Value)
+                Unknown3 = model.Unknown3,
+                Entries = model.Entries.ToDictionary(x => x.Key, x => x.ToEntity())
             };
 
             return entity;

@@ -12,6 +12,8 @@ namespace NFS2Tools.DataAccess.IO
 
         public virtual Stream BaseStream => stream;
 
+        public bool IsBigEndian { get; set; }
+
         public NfsFileReader(string filePath, FileMode fileMode)
         {
             FilePath = filePath;
@@ -103,7 +105,11 @@ namespace NFS2Tools.DataAccess.IO
         public short ReadInt16()
         {
             byte[] bytes = ReadBytes(2);
-            Array.Reverse(bytes);
+
+            if (IsBigEndian)
+            {
+                Array.Reverse(bytes);
+            }
 
             return BitConverter.ToInt16(bytes, 0);
         }
@@ -111,7 +117,11 @@ namespace NFS2Tools.DataAccess.IO
         public int ReadInt32()
         {
             byte[] bytes = ReadBytes(4);
-            Array.Reverse(bytes);
+
+            if (IsBigEndian)
+            {
+                Array.Reverse(bytes);
+            }
 
             return BitConverter.ToInt32(bytes, 0);
         }

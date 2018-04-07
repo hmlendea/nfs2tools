@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 using NFS2Tools.DataAccess.DataObjects;
 
@@ -27,6 +28,7 @@ namespace NFS2Tools.DataAccess.IO
             "CAR_NAME_FF50", "CAR_NAME_F355", "CAR_NAME_GT90", "CAR_NAME_IDGO", "CAR_NAME_MACH", "CAR_NAME_JAGR", "CAR_NAME_LGT1",
             "CAR_NAME_ESPR", "CAR_NAME_NAZC", "CAR_NAME_CALA", "CAR_NAME_ISDE", "CAR_NAME_BBFS", "CAR_NAME_DAYR", "CAR_NAME_FZR2",
         };
+        const int FirstValueOffset = 0x4668;
 
         /// <summary>
         /// Reads the STF file.
@@ -35,22 +37,32 @@ namespace NFS2Tools.DataAccess.IO
         /// <param name="path">Path.</param>
         public LocalisationEntity Read(string path)
         {
-            int offsetUnknown1End = 0x4668;
-
             LocalisationEntity locale = new LocalisationEntity();
 
             using (NfsFileReader reader = new NfsFileReader(path, FileMode.Open))
             {
-                locale.Unknown1 = reader.ReadBytes(offsetUnknown1End);
+                locale.Entries = new Dictionary<string, LocalisationEntryEntity>();
 
-                locale.Entries = new Dictionary<string, string>();
+                locale.Unknown1 = reader.ReadBytes(8);
+
                 foreach (string key in EntryOrder)
                 {
-                    string str = reader.ReadString();
-                    locale.Entries.Add(key, str);
+                    LocalisationEntryEntity entry = new LocalisationEntryEntity();
+                    entry.Key = key;
+                    entry.Offset = reader.ReadInt16();
+                    entry.UnknownBytes = reader.ReadBytes(10);
+
+                    locale.Entries.Add(key, entry);
                 }
 
-                locale.Unknown2 = reader.ReadBytes((int)(reader.BaseStream.Length - reader.BaseStream.Position));
+                locale.Unknown2 = reader.ReadBytes((int)(FirstValueOffset - reader.BaseStream.Position));
+
+                foreach (string key in EntryOrder)
+                {
+                    locale.Entries[key].Value = reader.ReadString();
+                }
+
+                locale.Unknown3 = reader.ReadBytes((int)(reader.BaseStream.Length - reader.BaseStream.Position));
             }
 
             return locale;
@@ -58,17 +70,41 @@ namespace NFS2Tools.DataAccess.IO
 
         public void Write(string path, LocalisationEntity locale)
         {
+            CalculateEntryOffsets(locale);
+
             using (NfsFileWriter writer = new NfsFileWriter(path, FileMode.OpenOrCreate))
             {
                 writer.WriteBytes(locale.Unknown1);
 
                 foreach (string key in EntryOrder)
                 {
-                    string str = locale.Entries[key];
-                    writer.WriteString(str);
+                    LocalisationEntryEntity entry = locale.Entries[key];
+                    writer.WriteInt16(entry.Offset);
+                    writer.WriteBytes(entry.UnknownBytes);
                 }
 
                 writer.WriteBytes(locale.Unknown2);
+
+                foreach (string key in EntryOrder)
+                {
+                    string str = locale.Entries[key].Value;
+                    writer.WriteString(str);
+                }
+
+                writer.WriteBytes(locale.Unknown3);
+            }
+        }
+
+        void CalculateEntryOffsets(LocalisationEntity locale)
+        {
+            short currentOffset = FirstValueOffset;
+
+            for (int i = 0; i < EntryOrder.Count; i++)
+            {
+                string key = EntryOrder[i];
+
+                locale.Entries[key].Offset = currentOffset;
+                currentOffset += (short)(locale.Entries[key].Value.Length + 1);
             }
         }
     }

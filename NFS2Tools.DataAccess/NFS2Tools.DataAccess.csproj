@@ -50,6 +50,7 @@
     <Compile Include="DataObjects\LocalisationEntity.cs" />
     <Compile Include="IO\NfsFileReader.cs" />
     <Compile Include="IO\NfsFileWriter.cs" />
+    <Compile Include="DataObjects\LocalisationEntryEntity.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

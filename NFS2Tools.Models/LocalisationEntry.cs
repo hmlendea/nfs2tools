@@ -7,17 +7,19 @@ namespace NFS2Tools.Models
         [XmlAttribute]
         public string Key { get; set; }
 
-        [XmlAttribute]
         public string Value { get; set; }
+
+        public byte[] UnknownBytes { get; set; }
 
         public LocalisationEntry()
         {
         }
 
-        public LocalisationEntry(string key, string value)
+        public LocalisationEntry(string key, string value, byte[] unknownBytes)
         {
             Key = key;
             Value = value;
+            UnknownBytes = unknownBytes;
         }
     }
 }

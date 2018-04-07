@@ -41,6 +41,7 @@
     <Compile Include="Converters\LocalisationConverter.cs" />
     <Compile Include="Converters\Interfaces\ILocalisationConverter.cs" />
     <Compile Include="Mapping\LocalisationMappingExtensions.cs" />
+    <Compile Include="Mapping\LocalisationEntryMappingExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mapping\" />

@@ -11,6 +11,8 @@ namespace NFS2Tools.DataAccess.IO
 
         public string FilePath { get; }
 
+        public bool IsBigEndian { get; }
+
         public virtual Stream BaseStream => stream;
 
         public NfsFileWriter(string filePath, FileMode fileMode)
@@ -69,7 +71,11 @@ namespace NFS2Tools.DataAccess.IO
         public void WriteInt16(short value)
         {
             byte[] bytes = BitConverter.GetBytes(value);
-            Array.Reverse(bytes);
+
+            if (IsBigEndian)
+            {
+                Array.Reverse(bytes);
+            }
 
             WriteBytes(bytes);
         }
@@ -77,7 +83,11 @@ namespace NFS2Tools.DataAccess.IO
         public void WriteInt32(int value)
         {
             byte[] bytes = BitConverter.GetBytes(value);
-            Array.Reverse(bytes);
+
+            if (IsBigEndian)
+            {
+                Array.Reverse(bytes);
+            }
 
             WriteBytes(bytes);
         }

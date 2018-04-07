@@ -9,6 +9,8 @@ namespace NFS2Tools.Models
 
         public byte[] Unknown2 { get; set; }
 
+        public byte[] Unknown3 { get; set; }
+
         [XmlElement("Entry")]
         public List<LocalisationEntry> Entries { get; set; }
     }
