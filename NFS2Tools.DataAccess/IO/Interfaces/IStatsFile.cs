@@ -2,7 +2,7 @@
 
 namespace NFS2Tools.DataAccess.IO.Interfaces
 {
-    public interface IStfManager
+    public interface IStatsFile
     {
         TrackRecordsEntity Read(string path);
 

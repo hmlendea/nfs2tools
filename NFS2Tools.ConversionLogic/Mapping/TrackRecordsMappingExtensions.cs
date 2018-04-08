@@ -15,30 +15,37 @@ namespace NFS2Tools.ConversionLogic.Mapping
         /// Converts the current <see cref="TrackRecordsEntity"/> into a <see cref="TrackRecords"/>.
         /// </summary>
         /// <returns>The <see cref="TrackRecords"/>.</returns>
-        /// <param name="trackRecordsEntity">The current <see cref="TrackRecordsEntity"/>.</param>
-        internal static TrackRecords ToDomainModel(this TrackRecordsEntity trackRecordsEntity)
+        /// <param name="entity">The current <see cref="TrackRecordsEntity"/>.</param>
+        internal static TrackRecords ToDomainModel(this TrackRecordsEntity entity)
         {
-            TrackRecords trackRecords = new TrackRecords
+            TrackRecords model = new TrackRecords
             {
-                LapRecords = trackRecordsEntity.LapRecords.ToList().ToDomainModels()
+                BestLapRecord = entity.LapRecords[0].ToDomainModel(),
+                RecordsFor2Laps = entity.LapRecords.Skip(1).Take(10).ToDomainModels().ToList(),
+                RecordsFor4Laps = entity.LapRecords.Skip(11).Take(10).ToDomainModels().ToList(),
+                RecordsFor8Laps = entity.LapRecords.Skip(21).Take(10).ToDomainModels().ToList(),
             };
 
-            return trackRecords;
+            return model;
         }
 
         /// <summary>
         /// Converts the current <see cref="TrackRecords"/> into a <see cref="TrackRecordsEntity"/>.
         /// </summary>
         /// <returns>The <see cref="TrackRecordsEntity"/>.</returns>
-        /// <param name="trackRecords">The current <see cref="TrackRecords"/>.</param>
-        internal static TrackRecordsEntity ToEntity(this TrackRecords trackRecords)
+        /// <param name="model">The current <see cref="TrackRecords"/>.</param>
+        internal static TrackRecordsEntity ToEntity(this TrackRecords model)
         {
-            TrackRecordsEntity trackRecordsEntity = new TrackRecordsEntity
+            TrackRecordsEntity entity = new TrackRecordsEntity
             {
-                LapRecords = trackRecords.LapRecords.ToEntities().ToArray()
+                LapRecords = new LapRecord[] { model.BestLapRecord }
+                    .Concat(model.RecordsFor2Laps)
+                    .Concat(model.RecordsFor4Laps)
+                    .Concat(model.RecordsFor8Laps)
+                    .ToEntities().ToArray()
             };
 
-            return trackRecordsEntity;
+            return entity;
         }
 
         /// <summary>

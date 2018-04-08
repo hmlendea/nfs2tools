@@ -42,8 +42,8 @@
     <Compile Include="DataObjects\SharedPictureFileEntity.cs" />
     <Compile Include="DataObjects\SharedPictureEntity.cs" />
     <Compile Include="DataObjects\TrackRecordsEntity.cs" />
-    <Compile Include="IO\Interfaces\IStfManager.cs" />
-    <Compile Include="IO\StfManager.cs" />
+    <Compile Include="IO\Interfaces\IStatsFile.cs" />
+    <Compile Include="IO\StatsFile.cs" />
     <Compile Include="IO\XmlManager.cs" />
     <Compile Include="IO\Interfaces\IXmlManager.cs" />
     <Compile Include="IO\LocalisationFile.cs" />
@@ -51,6 +51,7 @@
     <Compile Include="IO\NfsFileReader.cs" />
     <Compile Include="IO\NfsFileWriter.cs" />
     <Compile Include="DataObjects\LocalisationEntryEntity.cs" />
+    <Compile Include="IO\Endianness.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -24,7 +24,7 @@ namespace NFS2Tools.ConversionLogic.Mapping
             {
                 PlayerName = lapRecordEntity.PlayerName,
                 Car = (CarType)lapRecordEntity.CarId,
-                Time = TimeSpan.FromSeconds(lapRecordEntity.Time / 16384),
+                Time = (float)RoundDown((float)lapRecordEntity.Time / 16384, 2),
                 RaceType = (RaceType)lapRecordEntity.RaceType
             };
 
@@ -35,18 +35,18 @@ namespace NFS2Tools.ConversionLogic.Mapping
         /// Converts the domain model into an entity.
         /// </summary>
         /// <returns>The entity.</returns>
-        /// <param name="lapRecord">LapRecord.</param>
-        internal static LapRecordEntity ToEntity(this LapRecord lapRecord)
+        /// <param name="model">LapRecord.</param>
+        internal static LapRecordEntity ToEntity(this LapRecord model)
         {
-            LapRecordEntity lapRecordEntity = new LapRecordEntity
+            LapRecordEntity entity = new LapRecordEntity
             {
-                PlayerName = lapRecord.PlayerName.PadRight(9, '\0').Substring(0, 9),
-                CarId = (short)lapRecord.Car,
-                Time = (int)(lapRecord.Time.TotalSeconds * 16384),
-                RaceType = (short)lapRecord.RaceType
+                PlayerName = model.PlayerName.PadRight(8, '\t').Substring(0, 8),
+                CarId = (short)model.Car,
+                Time = (int)(model.Time * 16384),
+                RaceType = (short)model.RaceType
             };
 
-            return lapRecordEntity;
+            return entity;
         }
 
         /// <summary>
@@ -71,6 +71,11 @@ namespace NFS2Tools.ConversionLogic.Mapping
             IEnumerable<LapRecordEntity> lapRecordEntities = lapRecords.Select(lapRecord => lapRecord.ToEntity());
 
             return lapRecordEntities;
+        }
+
+        static double RoundDown(double number, int decimalPlaces)
+        {
+            return Math.Floor(number * Math.Pow(10, decimalPlaces)) / Math.Pow(10, decimalPlaces);
         }
     }
 }

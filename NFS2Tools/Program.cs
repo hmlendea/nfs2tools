@@ -34,7 +34,7 @@ namespace NFS2Tools
 
             if (inputExtension == "stf" || outputExtension == "stf")
             {
-                IStfConverter stfConverter = new StfConverter();
+                ConversionLogic.Converters.Interfaces.StatsConverter stfConverter = new ConversionLogic.Converters.StatsConverter();
 
                 if (inputExtension == "xml")
                 {

@@ -12,11 +12,15 @@ namespace NFS2Tools.DataAccess.IO
 
         public virtual Stream BaseStream => stream;
 
-        public bool IsBigEndian { get; set; }
+        public Endianness SystemEndianness { get; }
+
+        public Endianness ReaderEndianness { get; set; }
 
         public NfsFileReader(string filePath, FileMode fileMode)
         {
             FilePath = filePath;
+            SystemEndianness = BitConverter.IsLittleEndian ? Endianness.LittleEndian : Endianness.BigEndian;
+            ReaderEndianness = SystemEndianness;
 
             stream = File.Open(filePath, fileMode);
         }
@@ -117,11 +121,13 @@ namespace NFS2Tools.DataAccess.IO
             return str.TrimEnd('\0');
         }
 
-        public short ReadInt16()
+        public short ReadInt16() => ReadInt16(ReaderEndianness);
+
+        public short ReadInt16(Endianness endianness)
         {
             byte[] bytes = ReadBytes(2);
 
-            if (IsBigEndian)
+            if (endianness != SystemEndianness)
             {
                 Array.Reverse(bytes);
             }
@@ -129,11 +135,13 @@ namespace NFS2Tools.DataAccess.IO
             return BitConverter.ToInt16(bytes, 0);
         }
 
-        public int ReadInt32()
+        public int ReadInt32() => ReadInt32(ReaderEndianness);
+
+        public int ReadInt32(Endianness endianness)
         {
             byte[] bytes = ReadBytes(4);
 
-            if (IsBigEndian)
+            if (endianness != SystemEndianness)
             {
                 Array.Reverse(bytes);
             }

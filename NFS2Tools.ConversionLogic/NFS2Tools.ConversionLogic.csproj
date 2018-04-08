@@ -36,8 +36,8 @@
     <Compile Include="Mapping\SharedPictureFileMappingExtensions.cs" />
     <Compile Include="Mapping\TrackRecordsMappingExtensions.cs" />
     <Compile Include="Mapping\SharedPictureMappingExtensions.cs" />
-    <Compile Include="Converters\StfConverter.cs" />
-    <Compile Include="Converters\Interfaces\IStfConverter.cs" />
+    <Compile Include="Converters\StatsConverter.cs" />
+    <Compile Include="Converters\Interfaces\StatsConverter.cs" />
     <Compile Include="Converters\LocalisationConverter.cs" />
     <Compile Include="Converters\Interfaces\ILocalisationConverter.cs" />
     <Compile Include="Mapping\LocalisationMappingExtensions.cs" />

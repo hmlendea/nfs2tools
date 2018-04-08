@@ -1,6 +1,4 @@
-﻿using System;
-
-using NFS2Tools.Models.Enumerations;
+﻿using NFS2Tools.Models.Enumerations;
 
 namespace NFS2Tools.Models
 {
@@ -24,8 +22,8 @@ namespace NFS2Tools.Models
         /// <summary>
         /// Gets or sets the time.
         /// </summary>
-        /// <value>The time (64ths of a second).</value>
-        public TimeSpan Time { get; set; }
+        /// <value>The time.</value>
+        public float Time { get; set; }
 
         /// <summary>
         /// Gets or sets the type of the race.

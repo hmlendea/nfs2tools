@@ -11,13 +11,19 @@ namespace NFS2Tools.DataAccess.IO
 
         public string FilePath { get; }
 
-        public bool IsBigEndian { get; }
+        public bool InvertedEndianness { get; }
 
         public virtual Stream BaseStream => stream;
+
+        public Endianness SystemEndianness { get; }
+
+        public Endianness WriterEndianness { get; set; }
 
         public NfsFileWriter(string filePath, FileMode fileMode)
         {
             FilePath = filePath;
+            SystemEndianness = BitConverter.IsLittleEndian ? Endianness.LittleEndian : Endianness.BigEndian;
+            WriterEndianness = SystemEndianness;
 
             stream = File.Open(filePath, fileMode);
         }
@@ -68,11 +74,35 @@ namespace NFS2Tools.DataAccess.IO
             WriteByte(0);
         }
 
-        public void WriteInt16(short value)
+        public void WriteString(string value, int length) => WriteString(value, length, '\0');
+
+        public void WriteString(string value, int length, char paddingChar)
+        {
+            string str = value;
+
+            if (str.Length > length)
+            {
+                str = value.Substring(0, length);
+            }
+
+            if (str.Length < length)
+            {
+                str.PadRight(length, paddingChar);
+            }
+
+            byte[] strBytes = value.Select(Convert.ToByte).ToArray();
+
+            WriteBytes(strBytes);
+            WriteByte(0);
+        }
+
+        public void WriteInt16(short value) => WriteInt16(value, WriterEndianness);
+
+        public void WriteInt16(short value, Endianness endianness)
         {
             byte[] bytes = BitConverter.GetBytes(value);
 
-            if (IsBigEndian)
+            if (endianness != SystemEndianness)
             {
                 Array.Reverse(bytes);
             }
@@ -80,11 +110,13 @@ namespace NFS2Tools.DataAccess.IO
             WriteBytes(bytes);
         }
 
-        public void WriteInt32(int value)
+        public void WriteInt32(int value) => WriteInt32(value, WriterEndianness);
+
+        public void WriteInt32(int value, Endianness endianness)
         {
             byte[] bytes = BitConverter.GetBytes(value);
 
-            if (IsBigEndian)
+            if (endianness != SystemEndianness)
             {
                 Array.Reverse(bytes);
             }

@@ -1,6 +1,4 @@
-﻿using NFS2Tools.ConversionLogic.Converters.Interfaces;
-using NFS2Tools.ConversionLogic.Mapping;
-using NFS2Tools.DataAccess.DataObjects;
+﻿using NFS2Tools.ConversionLogic.Mapping;
 using NFS2Tools.DataAccess.IO;
 using NFS2Tools.DataAccess.IO.Interfaces;
 using NFS2Tools.Models;
@@ -10,18 +8,18 @@ namespace NFS2Tools.ConversionLogic.Converters
     /// <summary>
     /// STF converter.
     /// </summary>
-    public class StfConverter : IStfConverter
+    public class StatsConverter : Interfaces.StatsConverter
     {
-        readonly IStfManager stfManager;
-        readonly IXmlManager<TrackRecordsEntity> xmlManager;
+        readonly IStatsFile stf;
+        readonly IXmlManager<TrackRecords> xmlManager;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StfConverter"/> class.
+        /// Initializes a new instance of the <see cref="StatsConverter"/> class.
         /// </summary>
-        public StfConverter()
+        public StatsConverter()
         {
-            stfManager = new StfManager();
-            xmlManager = new XmlManager<TrackRecordsEntity>();
+            stf = new StatsFile();
+            xmlManager = new XmlManager<TrackRecords>();
         }
 
         /// <summary>
@@ -31,9 +29,9 @@ namespace NFS2Tools.ConversionLogic.Converters
         /// <param name="xmlPath">XML path.</param>
         public void ConvertToXML(string stfPath, string xmlPath)
         {
-            TrackRecords records = stfManager.Read(stfPath).ToDomainModel();
+            TrackRecords records = stf.Read(stfPath).ToDomainModel();
 
-            xmlManager.Write(xmlPath, records.ToEntity());
+            xmlManager.Write(xmlPath, records);
         }
 
         /// <summary>
@@ -43,9 +41,9 @@ namespace NFS2Tools.ConversionLogic.Converters
         /// <param name="stfPath">STF path.</param>
         public void ConvertToSTF(string xmlPath, string stfPath)
         {
-            TrackRecords records = xmlManager.Read(xmlPath).ToDomainModel();
+            TrackRecords records = xmlManager.Read(xmlPath);
 
-            stfManager.Write(stfPath, records.ToEntity());
+            stf.Write(stfPath, records.ToEntity());
         }
     }
 }

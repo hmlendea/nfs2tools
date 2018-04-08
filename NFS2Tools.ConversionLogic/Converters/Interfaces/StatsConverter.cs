@@ -1,6 +1,6 @@
 ﻿namespace NFS2Tools.ConversionLogic.Converters.Interfaces
 {
-    public interface IStfConverter
+    public interface StatsConverter
     {
         void ConvertToXML(string stfPath, string xmlPath);
 
