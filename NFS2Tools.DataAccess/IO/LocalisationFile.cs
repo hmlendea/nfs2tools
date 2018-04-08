@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 using NFS2Tools.DataAccess.DataObjects;
 
@@ -14,9 +13,9 @@ namespace NFS2Tools.DataAccess.IO
         int firstValueOffset;
 
         /// <summary>
-        /// Reads the STF file.
+        /// Reads the localisation file.
         /// </summary>
-        /// <returns>The stf.</returns>
+        /// <returns>The localisation data.</returns>
         /// <param name="path">Path.</param>
         public LocalisationEntity Read(string path)
         {
@@ -42,7 +41,6 @@ namespace NFS2Tools.DataAccess.IO
                         firstValueOffset = entry.Offset;
                     }
                 }
-                System.Console.WriteLine(locale.Entries.Count);
 
                 locale.Unknown2 = reader.ReadBytes((int)(firstValueOffset - reader.BaseStream.Position));
 

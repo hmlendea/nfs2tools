@@ -7,3 +7,4 @@ NFS2 Tools is a collection of converters and editors that aid in modding the gam
 ### Converters
 
 - STF <-> XML
+- Language file <-> XML
