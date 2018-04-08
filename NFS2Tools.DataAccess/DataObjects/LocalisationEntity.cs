@@ -10,6 +10,6 @@ namespace NFS2Tools.DataAccess.DataObjects
 
         public byte[] Unknown3 { get; set; }
 
-        public IDictionary<string, LocalisationEntryEntity> Entries { get; set; }
+        public IList<LocalisationEntryEntity> Entries { get; set; }
     }
 }

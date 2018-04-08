@@ -20,7 +20,6 @@ namespace NFS2Tools.ConversionLogic.Mapping
         {
             LocalisationEntry model = new LocalisationEntry
             {
-                Key = entity.Key,
                 Value = entity.Value,
                 UnknownBytes = entity.UnknownBytes
             };
@@ -37,7 +36,6 @@ namespace NFS2Tools.ConversionLogic.Mapping
         {
             LocalisationEntryEntity entity = new LocalisationEntryEntity
             {
-                Key = model.Key,
                 Value = model.Value,
                 UnknownBytes = model.UnknownBytes
             };

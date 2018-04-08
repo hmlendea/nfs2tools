@@ -102,6 +102,21 @@ namespace NFS2Tools.DataAccess.IO
             return str;
         }
 
+        public string ReadString(int count)
+        {
+            string str = string.Empty;
+
+            while (count > 0)
+            {
+                char c = ReadChar();
+
+                str += c;
+                count -= 1;
+            }
+
+            return str.TrimEnd('\0');
+        }
+
         public short ReadInt16()
         {
             byte[] bytes = ReadBytes(2);
