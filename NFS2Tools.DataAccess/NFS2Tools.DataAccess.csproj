@@ -1,58 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{13D85053-550F-4FAC-9A92-BB43D1007D5E}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>NFS2Tools.DataAccess</RootNamespace>
-    <AssemblyName>NFS2Tools.DataAccess</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
+    <ProjectReference Include="..\NFS2Tools.Models\NFS2Tools.Models.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="DataObjects\BitmapDirectoryEntity.cs" />
-    <Compile Include="DataObjects\BitmapHeaderEntity.cs" />
-    <Compile Include="DataObjects\FshEntryHeaderEntity.cs" />
-    <Compile Include="DataObjects\FshHeaderEntity.cs" />
-    <Compile Include="IO\FshManager.cs" />
-    <Compile Include="IO\Interfaces\IFshManager.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataObjects\LapRecordEntity.cs" />
-    <Compile Include="DataObjects\SharedPictureFileEntity.cs" />
-    <Compile Include="DataObjects\SharedPictureEntity.cs" />
-    <Compile Include="DataObjects\TrackRecordsEntity.cs" />
-    <Compile Include="IO\Interfaces\IStatsFile.cs" />
-    <Compile Include="IO\StatsFile.cs" />
-    <Compile Include="IO\XmlManager.cs" />
-    <Compile Include="IO\Interfaces\IXmlManager.cs" />
-    <Compile Include="IO\LocalisationFile.cs" />
-    <Compile Include="DataObjects\LocalisationEntity.cs" />
-    <Compile Include="IO\NfsFileReader.cs" />
-    <Compile Include="IO\NfsFileWriter.cs" />
-    <Compile Include="DataObjects\LocalisationEntryEntity.cs" />
-    <Compile Include="IO\Endianness.cs" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+
 </Project>

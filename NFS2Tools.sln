@@ -1,13 +1,14 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFS2Tools", "NFS2Tools\NFS2Tools.csproj", "{B8B5BBDC-9CAC-42FC-A73B-2BCA5E3B64B4}"
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NFS2Tools", "NFS2Tools\NFS2Tools.csproj", "{B8B5BBDC-9CAC-42FC-A73B-2BCA5E3B64B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFS2Tools.Models", "NFS2Tools.Models\NFS2Tools.Models.csproj", "{185FC5F0-9BCC-4A07-9AD4-6C26B6F739AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NFS2Tools.Models", "NFS2Tools.Models\NFS2Tools.Models.csproj", "{185FC5F0-9BCC-4A07-9AD4-6C26B6F739AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFS2Tools.DataAccess", "NFS2Tools.DataAccess\NFS2Tools.DataAccess.csproj", "{13D85053-550F-4FAC-9A92-BB43D1007D5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NFS2Tools.DataAccess", "NFS2Tools.DataAccess\NFS2Tools.DataAccess.csproj", "{13D85053-550F-4FAC-9A92-BB43D1007D5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFS2Tools.ConversionLogic", "NFS2Tools.ConversionLogic\NFS2Tools.ConversionLogic.csproj", "{E13E1547-F348-43CA-8DE0-895F028B858A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NFS2Tools.ConversionLogic", "NFS2Tools.ConversionLogic\NFS2Tools.ConversionLogic.csproj", "{E13E1547-F348-43CA-8DE0-895F028B858A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +16,10 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B8B5BBDC-9CAC-42FC-A73B-2BCA5E3B64B4}.Debug|x86.ActiveCfg = Debug|x86
-		{B8B5BBDC-9CAC-42FC-A73B-2BCA5E3B64B4}.Debug|x86.Build.0 = Debug|x86
-		{B8B5BBDC-9CAC-42FC-A73B-2BCA5E3B64B4}.Release|x86.ActiveCfg = Release|x86
-		{B8B5BBDC-9CAC-42FC-A73B-2BCA5E3B64B4}.Release|x86.Build.0 = Release|x86
+		{B8B5BBDC-9CAC-42FC-A73B-2BCA5E3B64B4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B8B5BBDC-9CAC-42FC-A73B-2BCA5E3B64B4}.Debug|x86.Build.0 = Debug|Any CPU
+		{B8B5BBDC-9CAC-42FC-A73B-2BCA5E3B64B4}.Release|x86.ActiveCfg = Release|Any CPU
+		{B8B5BBDC-9CAC-42FC-A73B-2BCA5E3B64B4}.Release|x86.Build.0 = Release|Any CPU
 		{185FC5F0-9BCC-4A07-9AD4-6C26B6F739AB}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{185FC5F0-9BCC-4A07-9AD4-6C26B6F739AB}.Debug|x86.Build.0 = Debug|Any CPU
 		{185FC5F0-9BCC-4A07-9AD4-6C26B6F739AB}.Release|x86.ActiveCfg = Release|Any CPU
@@ -31,5 +32,11 @@ Global
 		{E13E1547-F348-43CA-8DE0-895F028B858A}.Debug|x86.Build.0 = Debug|Any CPU
 		{E13E1547-F348-43CA-8DE0-895F028B858A}.Release|x86.ActiveCfg = Release|Any CPU
 		{E13E1547-F348-43CA-8DE0-895F028B858A}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D9C58791-F703-4844-B458-BA3C4F538B5A}
 	EndGlobalSection
 EndGlobal
