@@ -1,4 +1,4 @@
-﻿namespace NFS2Tools.Models.Enumerations
+﻿namespace NFS2Tools.Models
 {
     /// <summary>
     /// Car.

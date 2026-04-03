@@ -1,6 +1,4 @@
-﻿using NFS2Tools.Models.Enumerations;
-
-namespace NFS2Tools.Models
+﻿namespace NFS2Tools.Models
 {
     /// <summary>
     /// Lap record.

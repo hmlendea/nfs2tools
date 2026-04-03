@@ -4,7 +4,6 @@ using System.Linq;
 
 using NFS2Tools.DataAccess.DataObjects;
 using NFS2Tools.Models;
-using NFS2Tools.Models.Enumerations;
 
 namespace NFS2Tools.Service.Mapping
 {
