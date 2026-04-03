@@ -31,15 +31,15 @@ namespace NFS2Tools
             string inputExtension = Path.GetExtension(inputPath)[1..].ToLower();
             string outputExtension = Path.GetExtension(outputPath)[1..].ToLower();
 
-            if (FileType.IsSupported(inputExtension))
+            if (inputExtension.Equals(FileType.STF) || outputExtension.Equals(FileType.STF))
             {
                 IStatsConverter stfConverter = new StatsConverter();
 
-                if (inputExtension == "xml")
+                if (inputExtension.Equals(FileType.XML))
                 {
                     stfConverter.ConvertToSTF(inputPath, outputPath);
                 }
-                else if (outputExtension == "xml")
+                else if (outputExtension.Equals(FileType.XML))
                 {
                     stfConverter.ConvertToXML(inputPath, outputPath);
                 }
@@ -49,12 +49,12 @@ namespace NFS2Tools
             {
                 ILocalisationConverter localisationConverter = new LocalisationConverter();
 
-                if (inputExtension == "xml")
+                if (inputExtension.Equals(FileType.XML))
                 {
                     localisationConverter.ConvertToLocalisationFile(inputPath, outputPath);
                 }
 
-                if (outputExtension == "xml")
+                if (outputExtension.Equals(FileType.XML))
                 {
                     localisationConverter.ConvertToXML(inputPath, outputPath);
                 }
