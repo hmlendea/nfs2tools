@@ -1,6 +1,7 @@
 ﻿using NFS2Tools.Service.Mapping;
 using NFS2Tools.DataAccess.IO;
 using NFS2Tools.Models;
+using NuciDAL.IO;
 
 namespace NFS2Tools.Service.Converters
 {
@@ -10,7 +11,7 @@ namespace NFS2Tools.Service.Converters
     public class StatsConverter : IStatsConverter
     {
         readonly IStatsFile stf;
-        readonly IXmlManager<TrackRecords> xmlManager;
+        readonly XmlFileObject<TrackRecords> xmlManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StatsConverter"/> class.
@@ -18,7 +19,7 @@ namespace NFS2Tools.Service.Converters
         public StatsConverter()
         {
             stf = new StatsFile();
-            xmlManager = new XmlManager<TrackRecords>();
+            xmlManager = new XmlFileObject<TrackRecords>();
         }
 
         /// <summary>

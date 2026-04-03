@@ -2,6 +2,7 @@
 using NFS2Tools.DataAccess.DataObjects;
 using NFS2Tools.DataAccess.IO;
 using NFS2Tools.Models;
+using NuciDAL.IO;
 
 namespace NFS2Tools.Service.Converters
 {
@@ -11,7 +12,7 @@ namespace NFS2Tools.Service.Converters
     public class LocalisationConverter : ILocalisationConverter
     {
         readonly LocalisationFile localisationFile;
-        readonly IXmlManager<Localisation> xmlManager;
+        readonly XmlFileObject<Localisation> xml;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LocalisationConverter"/> class.
@@ -19,7 +20,7 @@ namespace NFS2Tools.Service.Converters
         public LocalisationConverter()
         {
             localisationFile = new LocalisationFile();
-            xmlManager = new XmlManager<Localisation>();
+            xml = new XmlFileObject<Localisation>();
         }
 
         /// <summary>
@@ -31,7 +32,7 @@ namespace NFS2Tools.Service.Converters
         {
             Localisation locale = localisationFile.Read(inputPath).ToDomainModel();
 
-            xmlManager.Write(outputPath, locale);
+            xml.Write(outputPath, locale);
         }
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace NFS2Tools.Service.Converters
         /// <param name="outputPath">Localisation file path.</param>
         public void ConvertToLocalisationFile(string inputPath, string outputPath)
         {
-            LocalisationEntity locale = xmlManager.Read(inputPath).ToEntity();
+            LocalisationEntity locale = xml.Read(inputPath).ToEntity();
 
             localisationFile.Write(outputPath, locale);
         }
