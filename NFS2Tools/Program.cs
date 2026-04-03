@@ -1,9 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-
-using NFS2Tools.ConversionLogic.Converters;
-using NFS2Tools.ConversionLogic.Converters.Interfaces;
+using NFS2Tools.DataAccess.IO;
+using NFS2Tools.Service.Converters;
 
 namespace NFS2Tools
 {
@@ -12,7 +11,7 @@ namespace NFS2Tools
     /// </summary>
     class MainClass
     {
-        static string[] localisationExtensions = { "eng", "fre", "ger", "ita", "spa", "swe" };
+        static readonly string[] localisationExtensions = ["eng", "fre", "ger", "ita", "spa", "swe"];
 
         /// <summary>
         /// The entry point of the program, where the program control starts and ends.
@@ -29,18 +28,18 @@ namespace NFS2Tools
             string inputPath = args[0];
             string outputPath = args[1];
 
-            string inputExtension = Path.GetExtension(inputPath).Substring(1).ToLower();
-            string outputExtension = Path.GetExtension(outputPath).Substring(1).ToLower();
+            string inputExtension = Path.GetExtension(inputPath)[1..].ToLower();
+            string outputExtension = Path.GetExtension(outputPath)[1..].ToLower();
 
-            if (inputExtension == "stf" || outputExtension == "stf")
+            if (inputExtension.Equals(FileType.STF) || outputExtension.Equals(FileType.STF))
             {
-                ConversionLogic.Converters.Interfaces.StatsConverter stfConverter = new ConversionLogic.Converters.StatsConverter();
+                IStatsConverter stfConverter = new StatsConverter();
 
-                if (inputExtension == "xml")
+                if (inputExtension.Equals(FileType.XML))
                 {
                     stfConverter.ConvertToSTF(inputPath, outputPath);
                 }
-                else if (outputExtension == "xml")
+                else if (outputExtension.Equals(FileType.XML))
                 {
                     stfConverter.ConvertToXML(inputPath, outputPath);
                 }
@@ -50,12 +49,12 @@ namespace NFS2Tools
             {
                 ILocalisationConverter localisationConverter = new LocalisationConverter();
 
-                if (inputExtension == "xml")
+                if (inputExtension.Equals(FileType.XML))
                 {
                     localisationConverter.ConvertToLocalisationFile(inputPath, outputPath);
                 }
 
-                if (outputExtension == "xml")
+                if (outputExtension.Equals(FileType.XML))
                 {
                     localisationConverter.ConvertToXML(inputPath, outputPath);
                 }

@@ -10,4 +10,8 @@
     <ProjectReference Include="..\NFS2Tools.ConversionLogic\NFS2Tools.ConversionLogic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="NuciDAL" Version="3.0.1" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,49 @@
+﻿using NFS2Tools.Service.Mapping;
+using NFS2Tools.DataAccess.IO;
+using NFS2Tools.Models;
+using NuciDAL.IO;
+
+namespace NFS2Tools.Service.Converters
+{
+    /// <summary>
+    /// STF converter.
+    /// </summary>
+    public class StatsConverter : IStatsConverter
+    {
+        readonly IStatsFile stf;
+        readonly XmlFileObject<TrackRecords> xmlManager;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StatsConverter"/> class.
+        /// </summary>
+        public StatsConverter()
+        {
+            stf = new StatsFile();
+            xmlManager = new XmlFileObject<TrackRecords>();
+        }
+
+        /// <summary>
+        /// Converts an STF into an XML.
+        /// </summary>
+        /// <param name="stfPath">STF path.</param>
+        /// <param name="xmlPath">XML path.</param>
+        public void ConvertToXML(string stfPath, string xmlPath)
+        {
+            TrackRecords records = stf.Read(stfPath).ToDomainModel();
+
+            xmlManager.Write(xmlPath, records);
+        }
+
+        /// <summary>
+        /// Converts an XML into an STF.
+        /// </summary>
+        /// <param name="xmlPath">XML path.</param>
+        /// <param name="stfPath">STF path.</param>
+        public void ConvertToSTF(string xmlPath, string stfPath)
+        {
+            TrackRecords records = xmlManager.Read(xmlPath);
+
+            stf.Write(stfPath, records.ToEntity());
+        }
+    }
+}
