@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-
+using NFS2Tools.DataAccess.IO;
 using NFS2Tools.Service.Converters;
 
 namespace NFS2Tools
@@ -31,7 +31,7 @@ namespace NFS2Tools
             string inputExtension = Path.GetExtension(inputPath)[1..].ToLower();
             string outputExtension = Path.GetExtension(outputPath)[1..].ToLower();
 
-            if (inputExtension == "stf" || outputExtension == "stf")
+            if (FileType.IsSupported(inputExtension))
             {
                 IStatsConverter stfConverter = new StatsConverter();
 
