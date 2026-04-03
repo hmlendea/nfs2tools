@@ -7,68 +7,50 @@ using NFS2Tools.Models;
 namespace NFS2Tools.Service.Mapping
 {
     /// <summary>
-    /// Localisation mapping extensions for converting between entities and domain models.
+    /// Localisation mapping extensions for converting between data objects and domain models.
     /// </summary>
     static class LocalisationMappingExtensions
     {
         /// <summary>
-        /// Converts the entity into a domain model.
+        /// Converts the data object into a domain model.
         /// </summary>
         /// <returns>The domain model.</returns>
-        /// <param name="entity">Localisation entity.</param>
-        internal static Localisation ToDomainModel(this LocalisationEntity entity)
+        /// <param name="dataObject">The data object.</param>
+        internal static Localisation ToDomainModel(this LocalisationEntity dataObject) => new()
         {
-            Localisation model = new Localisation
-            {
-                Unknown1 = entity.Unknown1,
-                Unknown2 = entity.Unknown2,
-                Unknown3 = entity.Unknown3,
-                Entries = entity.Entries.ToDomainModels().ToList()
-            };
-
-            return model;
-        }
+            Unknown1 = dataObject.Unknown1,
+            Unknown2 = dataObject.Unknown2,
+            Unknown3 = dataObject.Unknown3,
+            Entries = [.. dataObject.Entries.ToDomainModels()]
+        };
 
         /// <summary>
-        /// Converts the domain model into an entity.
+        /// Converts the domain model into a data object.
         /// </summary>
-        /// <returns>The entity.</returns>
-        /// <param name="model">Localisation.</param>
-        internal static LocalisationEntity ToEntity(this Localisation model)
+        /// <returns>The data object.</returns>
+        /// <param name="domainModel">The domain model.</param>
+        internal static LocalisationEntity ToEntity(this Localisation model) => new()
         {
-            LocalisationEntity entity = new LocalisationEntity
-            {
-                Unknown1 = model.Unknown1,
-                Unknown2 = model.Unknown2,
-                Unknown3 = model.Unknown3,
-                Entries = model.Entries.ToEntities().ToList()
-            };
-
-            return entity;
-        }
+            Unknown1 = model.Unknown1,
+            Unknown2 = model.Unknown2,
+            Unknown3 = model.Unknown3,
+            Entries = [.. model.Entries.ToDataObjects()]
+        };
 
         /// <summary>
         /// Converts the entities into domain models.
         /// </summary>
         /// <returns>The domain models.</returns>
-        /// <param name="localisationEntities">Localisation entities.</param>
-        internal static IEnumerable<Localisation> ToDomainModels(this IEnumerable<LocalisationEntity> localisationEntities)
-        {
-            IEnumerable<Localisation> localisations = localisationEntities.Select(localisationEntity => localisationEntity.ToDomainModel());
-
-            return localisations;
-        }
+        /// <param name="dataObjects">Localisation entities.</param>
+        internal static IEnumerable<Localisation> ToDomainModels(this IEnumerable<LocalisationEntity> dataObjects)
+            => dataObjects.Select(dataObject => dataObject.ToDomainModel());
 
         /// <summary>
-        /// Converts the domain models into entities.
+        /// Converts the data objects into domain models.
         /// </summary>
-        /// <returns>The entities.</returns>
-        /// <param name="localisations">Localisations.</param>
-        internal static IEnumerable<LocalisationEntity> ToEntities(this IEnumerable<Localisation> localisations)
-        {
-            IEnumerable<LocalisationEntity> localisationEntities = localisations.Select(localisation => localisation.ToEntity());
-
-            return localisationEntities;
-        }
+        /// <returns>The domain models.</returns>
+        /// <param name="dataObjects">The data objects.</param>
+        internal static IEnumerable<LocalisationEntity> ToEntities(this IEnumerable<Localisation> dataObjects)
+            => dataObjects.Select(dataObject => dataObject.ToEntity());
     }
 }

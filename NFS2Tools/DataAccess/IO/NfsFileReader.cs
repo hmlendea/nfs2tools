@@ -41,15 +41,9 @@ namespace NFS2Tools.DataAccess.IO
             disposed = true;
         }
 
-        public void Dispose()
-        {
-            Dispose(true);
-        }
+        public void Dispose() => Dispose(true);
 
-        public void Close()
-        {
-            Dispose();
-        }
+        public void Close() => Dispose();
 
         public byte ReadByte()
         {

@@ -35,7 +35,7 @@ namespace NFS2Tools.DataAccess.IO
 
             using (TextReader reader = new StreamReader(path))
             {
-                XmlSerializer xml = new XmlSerializer(Type);
+                XmlSerializer xml = new(Type);
                 instance = (T)xml.Deserialize(reader);
             }
 
@@ -51,10 +51,9 @@ namespace NFS2Tools.DataAccess.IO
         {
             using (TextWriter writer = new StreamWriter(path))
             {
-                XmlSerializer xml = new XmlSerializer(Type);
+                XmlSerializer xml = new(Type);
                 xml.Serialize(writer, obj);
             }
         }
     }
 }
-

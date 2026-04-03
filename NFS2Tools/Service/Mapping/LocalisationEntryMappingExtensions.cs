@@ -7,64 +7,46 @@ using NFS2Tools.Models;
 namespace NFS2Tools.Service.Mapping
 {
     /// <summary>
-    /// LocalisationEntry mapping extensions for converting between entities and domain models.
+    /// LocalisationEntry mapping extensions for converting between data objects and domain models.
     /// </summary>
     static class LocalisationEntryMappingExtensions
     {
         /// <summary>
-        /// Converts the entity into a domain model.
+        /// Converts the data object into a domain model.
         /// </summary>
         /// <returns>The domain model.</returns>
-        /// <param name="entity">LocalisationEntry entity.</param>
-        internal static LocalisationEntry ToDomainModel(this LocalisationEntryEntity entity)
+        /// <param name="dataObject">The data object.</param>
+        internal static LocalisationEntry ToDomainModel(this LocalisationEntryEntity dataObject) => new()
         {
-            LocalisationEntry model = new LocalisationEntry
-            {
-                Value = entity.Value,
-                UnknownBytes = entity.UnknownBytes
-            };
-
-            return model;
-        }
+            Value = dataObject.Value,
+            UnknownBytes = dataObject.UnknownBytes
+        };
 
         /// <summary>
-        /// Converts the domain model into an entity.
+        /// Converts the domain model into a data object.
         /// </summary>
-        /// <returns>The entity.</returns>
-        /// <param name="model">LocalisationEntry.</param>
-        internal static LocalisationEntryEntity ToEntity(this LocalisationEntry model)
+        /// <returns>The data object.</returns>
+        /// <param name="domainModel">The domain model.</param>
+        internal static LocalisationEntryEntity ToDataObject(this LocalisationEntry domainModel) => new()
         {
-            LocalisationEntryEntity entity = new LocalisationEntryEntity
-            {
-                Value = model.Value,
-                UnknownBytes = model.UnknownBytes
-            };
-
-            return entity;
-        }
+            Value = domainModel.Value,
+            UnknownBytes = domainModel.UnknownBytes
+        };
 
         /// <summary>
-        /// Converts the entities into domain models.
+        /// Converts the data objects into domain models.
         /// </summary>
         /// <returns>The domain models.</returns>
-        /// <param name="localisationEntryEntities">LocalisationEntry entities.</param>
-        internal static IEnumerable<LocalisationEntry> ToDomainModels(this IEnumerable<LocalisationEntryEntity> localisationEntryEntities)
-        {
-            IEnumerable<LocalisationEntry> localisationEntries = localisationEntryEntities.Select(localisationEntryEntity => localisationEntryEntity.ToDomainModel());
-
-            return localisationEntries;
-        }
+        /// <param name="dataObjects">The data objects.</param>
+        internal static IEnumerable<LocalisationEntry> ToDomainModels(this IEnumerable<LocalisationEntryEntity> dataObjects)
+            => dataObjects.Select(dataObject => dataObject.ToDomainModel());
 
         /// <summary>
-        /// Converts the domain models into entities.
+        /// Converts the domain models into data objects.
         /// </summary>
-        /// <returns>The entities.</returns>
-        /// <param name="localisationEntries">LocalisationEntries.</param>
-        internal static IEnumerable<LocalisationEntryEntity> ToEntities(this IEnumerable<LocalisationEntry> localisationEntries)
-        {
-            IEnumerable<LocalisationEntryEntity> localisationEntryEntities = localisationEntries.Select(localisationEntry => localisationEntry.ToEntity());
-
-            return localisationEntryEntities;
-        }
+        /// <returns>The data objects.</returns>
+        /// <param name="domainModels">The domain models.</param>
+        internal static IEnumerable<LocalisationEntryEntity> ToDataObjects(this IEnumerable<LocalisationEntry> domainModels)
+            => domainModels.Select(domainModel => domainModel.ToDataObject());
     }
 }

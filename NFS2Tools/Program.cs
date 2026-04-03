@@ -12,7 +12,7 @@ namespace NFS2Tools
     /// </summary>
     class MainClass
     {
-        static string[] localisationExtensions = { "eng", "fre", "ger", "ita", "spa", "swe" };
+        static readonly string[] localisationExtensions = ["eng", "fre", "ger", "ita", "spa", "swe"];
 
         /// <summary>
         /// The entry point of the program, where the program control starts and ends.
@@ -29,8 +29,8 @@ namespace NFS2Tools
             string inputPath = args[0];
             string outputPath = args[1];
 
-            string inputExtension = Path.GetExtension(inputPath).Substring(1).ToLower();
-            string outputExtension = Path.GetExtension(outputPath).Substring(1).ToLower();
+            string inputExtension = Path.GetExtension(inputPath)[1..].ToLower();
+            string outputExtension = Path.GetExtension(outputPath)[1..].ToLower();
 
             if (inputExtension == "stf" || outputExtension == "stf")
             {

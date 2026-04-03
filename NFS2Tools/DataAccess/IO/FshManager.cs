@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 
 using NFS2Tools.DataAccess.IO.Interfaces;
 

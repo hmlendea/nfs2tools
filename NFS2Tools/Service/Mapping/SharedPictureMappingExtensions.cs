@@ -8,66 +8,48 @@ using NFS2Tools.Models;
 namespace NFS2Tools.Service.Mapping
 {
     /// <summary>
-    /// Lap record mapping extensions for converting between entities and domain models.
+    /// SharedPicture mapping extensions for converting between data objects and domain models.
     /// </summary>
     static class SharedPictureMappingExtensions
     {
         /// <summary>
-        /// Converts the entity into a domain model.
+        /// Converts the data object into a domain model.
         /// </summary>
         /// <returns>The domain model.</returns>
-        /// <param name="sharedPictureEntity">ShpiEntry entity.</param>
-        internal static SharedPicture ToDomainModel(this SharedPictureEntity sharedPictureEntity)
+        /// <param name="dataObject">The data object.</param>
+        internal static SharedPicture ToDomainModel(this SharedPictureEntity sharedPictureEntity) => new()
         {
-            SharedPicture sharedPicture = new SharedPicture
-            {
-                BitmapSize = new Size(sharedPictureEntity.BitmapWidth, sharedPictureEntity.BitmapHeight),
-                DisplayLocation = new Point(sharedPictureEntity.DisplayLocationX, sharedPictureEntity.DisplayLocationY)
-            };
-
-            return sharedPicture;
-        }
+            BitmapSize = new Size(sharedPictureEntity.BitmapWidth, sharedPictureEntity.BitmapHeight),
+            DisplayLocation = new Point(sharedPictureEntity.DisplayLocationX, sharedPictureEntity.DisplayLocationY)
+        };
 
         /// <summary>
-        /// Converts the domain model into an entity.
+        /// Converts the domain model into a data object.
         /// </summary>
-        /// <returns>The entity.</returns>
-        /// <param name="sharedPicture">ShpiEntry.</param>
-        internal static SharedPictureEntity ToEntity(this SharedPicture sharedPicture)
+        /// <returns>The data object.</returns>
+        /// <param name="domainModel">The domain model.</param>
+        internal static SharedPictureEntity ToDataObject(this SharedPicture sharedPicture) => new()
         {
-            SharedPictureEntity sharedPictureEntity = new SharedPictureEntity
-            {
-                BitmapWidth = sharedPicture.BitmapSize.Width,
-                BitmapHeight = sharedPicture.BitmapSize.Height,
-                DisplayLocationX = sharedPicture.DisplayLocation.X,
-                DisplayLocationY = sharedPicture.DisplayLocation.Y
-            };
-
-            return sharedPictureEntity;
-        }
+            BitmapWidth = sharedPicture.BitmapSize.Width,
+            BitmapHeight = sharedPicture.BitmapSize.Height,
+            DisplayLocationX = sharedPicture.DisplayLocation.X,
+            DisplayLocationY = sharedPicture.DisplayLocation.Y
+        };
 
         /// <summary>
-        /// Converts the entities into domain models.
+        /// Converts the data objects into domain models.
         /// </summary>
         /// <returns>The domain models.</returns>
-        /// <param name="sharedPictureEntities">ShpiEntry entities.</param>
-        internal static IEnumerable<SharedPicture> ToDomainModels(this IEnumerable<SharedPictureEntity> sharedPictureEntities)
-        {
-            IEnumerable<SharedPicture> sharedPictures = sharedPictureEntities.Select(sharedPictureEntity => sharedPictureEntity.ToDomainModel());
-
-            return sharedPictures;
-        }
+        /// <param name="dataObjects">The data objects.</param>
+        internal static IEnumerable<SharedPicture> ToDomainModels(this IEnumerable<SharedPictureEntity> dataObjects)
+            => dataObjects.Select(dataObject => dataObject.ToDomainModel());
 
         /// <summary>
-        /// Converts the domain models into entities.
+        /// Converts the domain models into data objects.
         /// </summary>
-        /// <returns>The entities.</returns>
-        /// <param name="sharedPictures">ShpiEntries.</param>
-        internal static IEnumerable<SharedPictureEntity> ToEntities(this IEnumerable<SharedPicture> sharedPictures)
-        {
-            IEnumerable<SharedPictureEntity> sharedPictureEntities = sharedPictures.Select(sharedPicture => sharedPicture.ToEntity());
-
-            return sharedPictureEntities;
-        }
+        /// <returns>The data objects.</returns>
+        /// <param name="domainModels">The domain models.</param>
+        internal static IEnumerable<SharedPictureEntity> ToDataObjects(this IEnumerable<SharedPicture> domainModels)
+            => domainModels.Select(domainModel => domainModel.ToDataObject());
     }
 }

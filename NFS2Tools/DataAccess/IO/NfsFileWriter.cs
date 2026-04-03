@@ -44,15 +44,9 @@ namespace NFS2Tools.DataAccess.IO
             disposed = true;
         }
 
-        public void Dispose()
-        {
-            Dispose(true);
-        }
+        public void Dispose() => Dispose(true);
 
-        public void Close()
-        {
-            Dispose();
-        }
+        public void Close() => Dispose();
 
         public void WriteByte(byte value) => BaseStream.WriteByte(value);
 
@@ -74,20 +68,24 @@ namespace NFS2Tools.DataAccess.IO
             WriteByte(0);
         }
 
-        public void WriteString(string value, int length) => WriteString(value, length, '\0');
+        public void WriteString(string value, int length)
+            => WriteString(value, length, '\0');
 
-        public void WriteString(string value, int length, char paddingChar)
+        public void WriteString(
+            string value,
+            int length,
+            char paddingCharacter)
         {
             string str = value;
 
             if (str.Length > length)
             {
-                str = value.Substring(0, length);
+                str = value[..length];
             }
 
             if (str.Length < length)
             {
-                str.PadRight(length, paddingChar);
+                str.PadRight(length, paddingCharacter);
             }
 
             byte[] strBytes = value.Select(Convert.ToByte).ToArray();

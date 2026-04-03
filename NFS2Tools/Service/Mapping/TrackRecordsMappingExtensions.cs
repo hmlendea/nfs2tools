@@ -7,69 +7,51 @@ using NFS2Tools.Models;
 namespace NFS2Tools.Service.Mapping
 {
     /// <summary>
-    /// <see cref="TrackRecords"/> mapping extensions for converting between <see cref="TrackRecords"/> and <see cref="TrackRecordsEntity"/>.
+    /// TrackRecords mapping extensions for converting between data objects and domain models.
     /// </summary>
     static class TrackRecordsMappingExtensions
     {
         /// <summary>
-        /// Converts the current <see cref="TrackRecordsEntity"/> into a <see cref="TrackRecords"/>.
+        /// Converts the data object into a domain model.
         /// </summary>
-        /// <returns>The <see cref="TrackRecords"/>.</returns>
-        /// <param name="entity">The current <see cref="TrackRecordsEntity"/>.</param>
-        internal static TrackRecords ToDomainModel(this TrackRecordsEntity entity)
+        /// <returns>The domain model.</returns>
+        /// <param name="dataObject">The data object.</param>
+        internal static TrackRecords ToDomainModel(this TrackRecordsEntity entity) => new()
         {
-            TrackRecords model = new TrackRecords
-            {
-                BestLapRecord = entity.LapRecords[0].ToDomainModel(),
-                RecordsFor2Laps = entity.LapRecords.Skip(1).Take(10).ToDomainModels().ToList(),
-                RecordsFor4Laps = entity.LapRecords.Skip(11).Take(10).ToDomainModels().ToList(),
-                RecordsFor8Laps = entity.LapRecords.Skip(21).Take(10).ToDomainModels().ToList(),
-            };
-
-            return model;
-        }
+            BestLapRecord = entity.LapRecords[0].ToDomainModel(),
+            RecordsFor2Laps = [.. entity.LapRecords.Skip(1).Take(10).ToDomainModels()],
+            RecordsFor4Laps = [.. entity.LapRecords.Skip(11).Take(10).ToDomainModels()],
+            RecordsFor8Laps = [.. entity.LapRecords.Skip(21).Take(10).ToDomainModels()],
+        };
 
         /// <summary>
-        /// Converts the current <see cref="TrackRecords"/> into a <see cref="TrackRecordsEntity"/>.
+        /// Converts the domain model into a data object.
         /// </summary>
-        /// <returns>The <see cref="TrackRecordsEntity"/>.</returns>
-        /// <param name="model">The current <see cref="TrackRecords"/>.</param>
-        internal static TrackRecordsEntity ToEntity(this TrackRecords model)
+        /// <returns>The data object.</returns>
+        /// <param name="domainModel">The domain model.</param>
+        internal static TrackRecordsEntity ToEntity(this TrackRecords model) => new()
         {
-            TrackRecordsEntity entity = new TrackRecordsEntity
-            {
-                LapRecords = new LapRecord[] { model.BestLapRecord }
-                    .Concat(model.RecordsFor2Laps)
-                    .Concat(model.RecordsFor4Laps)
-                    .Concat(model.RecordsFor8Laps)
-                    .ToEntities().ToArray()
-            };
-
-            return entity;
-        }
+            LapRecords = [.. new LapRecord[] { model.BestLapRecord }
+                .Concat(model.RecordsFor2Laps)
+                .Concat(model.RecordsFor4Laps)
+                .Concat(model.RecordsFor8Laps)
+                .ToDataObjects()]
+        };
 
         /// <summary>
-        /// Converts the current <see cref="TrackRecordsEntity"/> collection into a <see cref="TrackRecords"/> collection.
+        /// Converts the data objects into domain models.
         /// </summary>
-        /// <returns>The <see cref="TrackRecords"/> collection.</returns>
-        /// <param name="trackRecordsEntities">The current <see cref="TrackRecordsEntity"/> collection.</param>
-        internal static IEnumerable<TrackRecords> ToDomainModels(this IEnumerable<TrackRecordsEntity> trackRecordsEntities)
-        {
-            IEnumerable<TrackRecords> trackRecords = trackRecordsEntities.Select(tre => tre.ToDomainModel());
-
-            return trackRecords;
-        }
+        /// <returns>The domain models.</returns>
+        /// <param name="dataObjects">The data objects.</param>
+        internal static IEnumerable<TrackRecords> ToDomainModels(this IEnumerable<TrackRecordsEntity> dataObjects)
+            => dataObjects.Select(dataObject => dataObject.ToDomainModel());
 
         /// <summary>
-        /// Converts the current <see cref="TrackRecords"/> collection into a <see cref="TrackRecordsEntity"/> collection.
+        /// Converts the domain models into data objects.
         /// </summary>
-        /// <returns>The <see cref="TrackRecordsEntity"/> collection.</returns>
-        /// <param name="trackRecords">The current <see cref="TrackRecords"/> collection.</param>
-        internal static IEnumerable<TrackRecordsEntity> ToEntities(this IEnumerable<TrackRecords> trackRecords)
-        {
-            IEnumerable<TrackRecordsEntity> trackRecordsEntity = trackRecords.Select(tr => tr.ToEntity());
-
-            return trackRecordsEntity;
-        }
+        /// <returns>The data objects.</returns>
+        /// <param name="domainModels">The domain models.</param>
+        internal static IEnumerable<TrackRecordsEntity> ToEntities(this IEnumerable<TrackRecords> domainModels)
+            => domainModels.Select(domainModel => domainModel.ToEntity());
     }
 }
