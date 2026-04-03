@@ -4,7 +4,7 @@ using System.Linq;
 using NFS2Tools.DataAccess.DataObjects;
 using NFS2Tools.Models;
 
-namespace NFS2Tools.ConversionLogic.Mapping
+namespace NFS2Tools.Service.Mapping
 {
     /// <summary>
     /// Localisation mapping extensions for converting between entities and domain models.

@@ -6,7 +6,7 @@ using NFS2Tools.DataAccess.DataObjects;
 using NFS2Tools.Models;
 using NFS2Tools.Models.Enumerations;
 
-namespace NFS2Tools.ConversionLogic.Mapping
+namespace NFS2Tools.Service.Mapping
 {
     /// <summary>
     /// Lap record mapping extensions for converting between entities and domain models.

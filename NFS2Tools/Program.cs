@@ -2,8 +2,8 @@
 using System.IO;
 using System.Linq;
 
-using NFS2Tools.ConversionLogic.Converters;
-using NFS2Tools.ConversionLogic.Converters.Interfaces;
+using NFS2Tools.Service.Converters;
+using NFS2Tools.Service.Converters.Interfaces;
 
 namespace NFS2Tools
 {
@@ -34,7 +34,7 @@ namespace NFS2Tools
 
             if (inputExtension == "stf" || outputExtension == "stf")
             {
-                ConversionLogic.Converters.Interfaces.StatsConverter stfConverter = new ConversionLogic.Converters.StatsConverter();
+                Service.Converters.Interfaces.StatsConverter stfConverter = new Service.Converters.StatsConverter();
 
                 if (inputExtension == "xml")
                 {

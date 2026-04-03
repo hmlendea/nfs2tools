@@ -1,4 +1,4 @@
-﻿namespace NFS2Tools.ConversionLogic.Converters.Interfaces
+﻿namespace NFS2Tools.Service.Converters.Interfaces
 {
     public interface StatsConverter
     {
