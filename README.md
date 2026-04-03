@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/hmlendea/nfs2tools/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmlendea/nfs2tools/actions/workflows/dotnet.yml)
+[![Latest Release](https://img.shields.io/github/v/release/hmlendea/nucicraft-api)](https://github.com/hmlendea/nucicraft-api/releases/latest) [![Build Status](https://github.com/hmlendea/nfs2tools/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmlendea/nfs2tools/actions/workflows/dotnet.yml)
 
 # About
 
