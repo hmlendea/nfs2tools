@@ -1,8 +1,15 @@
-[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/fund.html) [![Latest Release](https://img.shields.io/github/v/release/hmlendea/nucicraft-api)](https://github.com/hmlendea/nucicraft-api/releases/latest) [![Build Status](https://github.com/hmlendea/nfs2tools/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmlendea/nfs2tools/actions/workflows/dotnet.yml)
+[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/fund.html) [![Latest Release](https://img.shields.io/github/v/release/hmlendea/nfs2tools)](https://github.com/hmlendea/nfs2tools/releases/latest) [![Build Status](https://github.com/hmlendea/nfs2tools/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmlendea/nfs2tools/actions/workflows/dotnet.yml)
 
 # About
 
-NFS2 Tools is a collection of converters and editors that aid in modding the game Need for Speed 2.
+NFS2 Tools is a command-line utility focused on data conversion for **Need for Speed 2** modding workflows.
+
+It currently supports conversion between game-specific binary files and XML for:
+
+- Race statistics (`.stf` <-> `.xml`)
+- Localisation files (`.eng`, `.fre`, `.ger`, `.ita`, `.spa`, `.swe` <-> `.xml`)
+
+The tool is designed for quick, script-friendly usage: provide an input file path and an output file path, and conversion direction is inferred from file extensions.
 
 ## Target Framework
 
@@ -14,17 +21,58 @@ The project currently targets `net10.0`.
 
 - .NET SDK compatible with the target framework
 
+To verify your SDK installation:
+
+```bash
+dotnet --info
+```
+
 ### Build
 
 ```bash
-dotnet build NFS2Tools.csproj
+dotnet build NFS2Tools/NFS2Tools.csproj
 ```
 
 ### Run
 
+The CLI expects exactly two arguments:
+
+1. Input file path
+2. Output file path
+
+General form:
+
 ```bash
-dotnet run --project NFS2Tools.csproj
+dotnet run --project NFS2Tools/NFS2Tools.csproj -- <input-file> <output-file>
 ```
+
+Examples:
+
+- Convert race stats to XML
+
+```bash
+dotnet run --project NFS2Tools/NFS2Tools.csproj -- records.stf records.xml
+```
+
+- Convert XML back to race stats
+
+```bash
+dotnet run --project NFS2Tools/NFS2Tools.csproj -- records.xml records.stf
+```
+
+- Convert localisation file to XML
+
+```bash
+dotnet run --project NFS2Tools/NFS2Tools.csproj -- language.eng language.xml
+```
+
+- Convert XML back to localisation format
+
+```bash
+dotnet run --project NFS2Tools/NFS2Tools.csproj -- language.xml language.eng
+```
+
+If arguments are missing or unsupported extensions are provided, the tool prints `Invalid arguments` or performs no conversion.
 
 ### Test
 
