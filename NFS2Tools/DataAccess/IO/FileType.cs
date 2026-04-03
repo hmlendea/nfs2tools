@@ -91,9 +91,6 @@ namespace NFS2Tools.DataAccess.IO
             return XML;
         }
 
-        public static bool IsSupported(string extension)
-            => values.Any(fileType => fileType.Equals(extension));
-
         public static bool operator ==(FileType current, FileType other) => current.Equals(other);
         public static bool operator !=(FileType current, FileType other) => !current.Equals(other);
 
