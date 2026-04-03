@@ -62,7 +62,7 @@ namespace NFS2Tools.DataAccess.IO
 
         public void WriteString(string value)
         {
-            byte[] strBytes = value.Select(Convert.ToByte).ToArray();
+            byte[] strBytes = [.. value.Select(Convert.ToByte)];
 
             WriteBytes(strBytes);
             WriteByte(0);
@@ -88,7 +88,7 @@ namespace NFS2Tools.DataAccess.IO
                 str.PadRight(length, paddingCharacter);
             }
 
-            byte[] strBytes = value.Select(Convert.ToByte).ToArray();
+            byte[] strBytes = [.. value.Select(Convert.ToByte)];
 
             WriteBytes(strBytes);
             WriteByte(0);

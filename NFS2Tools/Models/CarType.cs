@@ -1,68 +1,123 @@
-﻿namespace NFS2Tools.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace NFS2Tools.Models
 {
-    /// <summary>
-    /// Car.
-    /// </summary>
-    public enum CarType
+    public class CarType : IEquatable<CarType>
     {
-        /// <summary>
-        /// McLaren F1.
-        /// </summary>
-        McLarenF1 = 0,
+        static readonly Dictionary<string, CarType> values = new()
+        {
+            { nameof(McLarenF1), new CarType(0, nameof(McLarenF1)) },
+            { nameof(FerrariF50), new CarType(1, nameof(FerrariF50)) },
+            { nameof(Ferrari355F1), new CarType(2, nameof(Ferrari355F1)) },
+            { nameof(FordGT90), new CarType(3, nameof(FordGT90)) },
+            { nameof(FordIndigo), new CarType(4, nameof(FordIndigo)) },
+            { nameof(FordMachIII), new CarType(5, nameof(FordMachIII)) },
+            { nameof(JaguarXJ220), new CarType(6, nameof(JaguarXJ220)) },
+            { nameof(LotusGT1), new CarType(7, nameof(LotusGT1)) },
+            { nameof(LotusEspritV8), new CarType(8, nameof(LotusEspritV8)) },
+            { nameof(NazcaC2), new CarType(9, nameof(NazcaC2)) },
+            { nameof(ItaldesignCala), new CarType(10, nameof(ItaldesignCala)) },
+            { nameof(Isdera112i), new CarType(11, nameof(Isdera112i)) },
+        };
 
-        /// <summary>
-        /// Ferrari F50.
-        /// </summary>
-        FerrariF50 = 1,
+        public short Id { get; }
 
-        /// <summary>
-        /// Ferrari 355 F1.
-        /// </summary>
-        Ferrari355F1 = 2,
+        public string Name { get; }
 
-        /// <summary>
-        /// Ford GT90.
-        /// </summary>
-        FordGT90 = 3,
+        CarType(short id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
 
-        /// <summary>
-        /// Ford Indigo.
-        /// </summary>
-        FordIndigo = 4,
+        public static CarType McLarenF1 => values[nameof(McLarenF1)];
+        public static CarType FerrariF50 => values[nameof(FerrariF50)];
+        public static CarType Ferrari355F1 => values[nameof(Ferrari355F1)];
+        public static CarType FordGT90 => values[nameof(FordGT90)];
+        public static CarType FordIndigo => values[nameof(FordIndigo)];
+        public static CarType FordMachIII => values[nameof(FordMachIII)];
+        public static CarType JaguarXJ220 => values[nameof(JaguarXJ220)];
+        public static CarType LotusGT1 => values[nameof(LotusGT1)];
+        public static CarType LotusEspritV8 => values[nameof(LotusEspritV8)];
+        public static CarType NazcaC2 => values[nameof(NazcaC2)];
+        public static CarType ItaldesignCala => values[nameof(ItaldesignCala)];
+        public static CarType Isdera112i => values[nameof(Isdera112i)];
 
-        /// <summary>
-        /// Ford Mach III.
-        /// </summary>
-        FordMachIII = 5,
+        public static Array GetValues() => values.Values.ToArray();
 
-        /// <summary>
-        /// Jaguar XJ200.
-        /// </summary>
-        JaguarXJ220 = 6,
+        public bool Equals(CarType other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
 
-        /// <summary>
-        /// Lotus GT1.
-        /// </summary>
-        LotusGT1 = 7,
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
 
-        /// <summary>
-        /// Lotus Esprit V8.
-        /// </summary>
-        LotusEspritV8 = 8,
+            return Id == other.Id;
+        }
 
-        /// <summary>
-        /// Nazca C2.
-        /// </summary>
-        NazcaC2 = 9,
+        public override bool Equals(object obj)
+        {
+            if (obj is null)
+            {
+                return false;
+            }
 
-        /// <summary>
-        /// Italdesign Cala.
-        /// </summary>
-        ItaldesignCala = 10,
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
 
-        /// <summary>
-        /// Isdera 112i.
-        /// </summary>
-        Isdera112i = 11
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((CarType)obj);
+        }
+
+        public override int GetHashCode() => $"{nameof(CarType)}:{Id}".GetHashCode();
+
+        public override string ToString() => Name;
+
+        public static CarType FromId(short value)
+        {
+            if (values.Values.Any(v => v.Id == value))
+            {
+                return values.Values.First(v => v.Id == value);
+            }
+
+            return McLarenF1;
+        }
+
+        public static CarType FromName(string value)
+        {
+            if (values.ContainsKey(value))
+            {
+                return values[value];
+            }
+
+            if (values.Values.Any(v => v.Name.Equals(value)))
+            {
+                return values.Values.First(v => v.Name.Equals(value));
+            }
+
+            return McLarenF1;
+        }
+
+        public static bool operator ==(CarType current, CarType other) => current.Equals(other);
+        public static bool operator !=(CarType current, CarType other) => !current.Equals(other);
+
+        public static implicit operator short(CarType obj) => obj.Id;
+        public static implicit operator CarType(short id) => FromId(id);
+
+        public static implicit operator string(CarType obj) => obj.Name;
+        public static implicit operator CarType(string name) => FromName(name);
     }
 }
