@@ -1,4 +1,4 @@
-﻿namespace NFS2Tools.DataAccess.IO.Interfaces
+﻿namespace NFS2Tools.DataAccess.IO
 {
     public interface IFshManager
     {

@@ -1,4 +1,4 @@
-﻿namespace NFS2Tools.Service.Converters.Interfaces
+﻿namespace NFS2Tools.Service.Converters
 {
     public interface ILocalisationConverter
     {

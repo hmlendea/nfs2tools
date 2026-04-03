@@ -1,8 +1,6 @@
-﻿using NFS2Tools.Service.Converters.Interfaces;
-using NFS2Tools.Service.Mapping;
+﻿using NFS2Tools.Service.Mapping;
 using NFS2Tools.DataAccess.DataObjects;
 using NFS2Tools.DataAccess.IO;
-using NFS2Tools.DataAccess.IO.Interfaces;
 using NFS2Tools.Models;
 
 namespace NFS2Tools.Service.Converters

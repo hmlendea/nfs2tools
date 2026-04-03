@@ -2,8 +2,6 @@
 using System.IO;
 using System.Xml.Serialization;
 
-using NFS2Tools.DataAccess.IO.Interfaces;
-
 namespace NFS2Tools.DataAccess.IO
 {
     /// <summary>
@@ -49,11 +47,9 @@ namespace NFS2Tools.DataAccess.IO
         /// <param name="obj">Object to write.</param>
         public void Write(string path, T obj)
         {
-            using (TextWriter writer = new StreamWriter(path))
-            {
-                XmlSerializer xml = new(Type);
-                xml.Serialize(writer, obj);
-            }
+            using TextWriter writer = new StreamWriter(path);
+            XmlSerializer xml = new(Type);
+            xml.Serialize(writer, obj);
         }
     }
 }

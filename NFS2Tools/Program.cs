@@ -3,7 +3,6 @@ using System.IO;
 using System.Linq;
 
 using NFS2Tools.Service.Converters;
-using NFS2Tools.Service.Converters.Interfaces;
 
 namespace NFS2Tools
 {

@@ -1,6 +1,6 @@
 ﻿using NFS2Tools.DataAccess.DataObjects;
 
-namespace NFS2Tools.DataAccess.IO.Interfaces
+namespace NFS2Tools.DataAccess.IO
 {
     public interface IStatsFile
     {

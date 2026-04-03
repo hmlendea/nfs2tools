@@ -1,7 +1,6 @@
 ﻿using System.IO;
 
 using NFS2Tools.DataAccess.DataObjects;
-using NFS2Tools.DataAccess.IO.Interfaces;
 
 namespace NFS2Tools.DataAccess.IO
 {

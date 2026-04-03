@@ -1,8 +1,6 @@
 ﻿using System;
 using System.IO;
 
-using NFS2Tools.DataAccess.IO.Interfaces;
-
 namespace NFS2Tools.DataAccess.IO
 {
     public class FshManager : IFshManager
