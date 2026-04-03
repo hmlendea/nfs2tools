@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/hmlendea/nfs2tools.svg?branch=master)](https://travis-ci.com/hmlendea/nfs2tools)
+[![Build Status](https://github.com/hmlendea/nfs2tools/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmlendea/nfs2tools/actions/workflows/dotnet.yml)
 
 # About
 
